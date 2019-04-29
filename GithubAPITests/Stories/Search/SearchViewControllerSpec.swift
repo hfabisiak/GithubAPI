@@ -18,10 +18,13 @@ class SearchViewControllerSpec: QuickSpec {
             var sut: SearchViewController!
             var navigationController: UINavigationController!
             var repositoriesProviderStub: RepositoriesProviding!
+            var imagesFetcherStub: ImagesFetching!
             
             beforeEach {
                 repositoriesProviderStub = RepositoriesProviderStub()
-                sut = SearchViewController(repositoriesProvider: repositoriesProviderStub)
+                imagesFetcherStub = ImagesFetcherStub()
+                sut = SearchViewController(repositoriesProvider: repositoriesProviderStub,
+                                           imagesFetcher: imagesFetcherStub)
                 navigationController = UINavigationController(rootViewController: sut)
                 _ = sut.view
                 record = true
@@ -30,6 +33,7 @@ class SearchViewControllerSpec: QuickSpec {
             afterEach {
                 navigationController = nil
                 sut = nil
+                imagesFetcherStub = nil
                 repositoriesProviderStub = nil
                 record = false
             }
@@ -71,9 +75,34 @@ class SearchViewControllerSpec: QuickSpec {
                 }
             }
             
-            describe("displaying search results") {
+            describe("Repositories table view") {
                 
+                it("should have RepositoryCell registered") {
+                    let cell = sut.searchView.resultsTableView.dequeueReusableCell(withIdentifier: RepositoryCell.reuseIdentifier) as? RepositoryCell
+                    expect(cell).toNot(beNil())
+                }
                 
+                it("should have number of cells matching number of provided repositories") {
+                    let numberOfCells = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, numberOfRowsInSection: 0)
+                    expect(numberOfCells) == repositoriesProviderStub.repositories.count
+                }
+                
+                it("should have properly configured cell") {
+                    let cell = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, cellForRowAt: IndexPath(row: 2, section: 0)) as? RepositoryCell
+                    expect(cell?.avatarImageView.image?.pngData()) == UIImage(named: "github_pic_3.png", in: Bundle.testBundle, compatibleWith: nil)?.pngData()
+                    expect(cell?.topLabel.text) == "dionyziz/canvas-tetris"
+                    expect(cell?.bottomLabel.text) == "short description"
+                }
+                
+                it("should have correct row height") {
+                    expect(sut.searchView.resultsTableView.rowHeight) == 75.0
+                }
+                
+                it("should throw assertion if there is no such indexPath") {
+                    expect{
+                        _ = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, cellForRowAt: IndexPath(row: 10, section: 1))
+                    }.to(throwAssertion())
+                }
             }
             
             describe("required initializer") {

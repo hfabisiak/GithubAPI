@@ -28,6 +28,10 @@ class RepositoryCellSpec: QuickSpec {
                 sut = nil
             }
             
+            it("should have correct reuse identifier") {
+                expect(RepositoryCell.reuseIdentifier) == "RepositoryCell"
+            }
+            
             it("should match snapshot") {
                 assertSnapshot(matching: sut, as: .image(size: CGSize(width: 375.0, height: 75.0)))
             }

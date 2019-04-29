@@ -8,10 +8,10 @@
 
 import Foundation
 
-typealias RepositoriesSearchProviderCompletion = ((Result<RepositoriesSearchResponse, Error>) -> Void)
+typealias RepositoriesSearchProviderCompletion = ((Result<[Repository], Error>) -> Void)
 
 protocol RepositoriesProviding {
-    
+    var repositories: [Repository] { get }
     func search(_ query: String,
                 with completion: @escaping RepositoriesSearchProviderCompletion)
     

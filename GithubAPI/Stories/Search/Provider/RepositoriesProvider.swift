@@ -10,6 +10,8 @@ import Foundation
 
 class RepositoriesProvider: RepositoriesProviding {
     
+    var repositories: [Repository] = []
+    
     init(decoder: JSONDecoder = JSONDecoder(),
          session: URLSession = .shared,
          apiRoute: String = "https://api.github.com/search/repositories") {
@@ -26,7 +28,8 @@ class RepositoriesProvider: RepositoriesProviding {
             if let error = error {
                 completion(.failure(error))
             } else if let data = data, let searchResponse = try? self?.decoder.decode(RepositoriesSearchResponse.self, from: data) {
-                completion(.success(searchResponse))
+                self?.repositories.append(contentsOf: searchResponse.repos)
+                completion(.success(searchResponse.repos))
             }
         }.resume()
     }

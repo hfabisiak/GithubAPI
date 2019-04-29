@@ -43,6 +43,7 @@
 		ADCD71E222775A200058DF23 /* github_pic_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADCD71E122775A200058DF23 /* github_pic_4.jpg */; };
 		ADCD71E422775ED20058DF23 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71E322775ED20058DF23 /* RepositoryCell.swift */; };
 		ADCD71E7227762340058DF23 /* RepositoryCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71E6227762340058DF23 /* RepositoryCellSpec.swift */; };
+		ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71E8227764F10058DF23 /* UITableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		ADCD71E122775A200058DF23 /* github_pic_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = github_pic_4.jpg; sourceTree = "<group>"; };
 		ADCD71E322775ED20058DF23 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		ADCD71E6227762340058DF23 /* RepositoryCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellSpec.swift; sourceTree = "<group>"; };
+		ADCD71E8227764F10058DF23 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD71D2227756D10058DF23 /* Kingfisher+ImagesFetching.swift */,
+				ADCD71E8227764F10058DF23 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				ADCD71C5227743380058DF23 /* Repository.swift in Sources */,
 				ADCD71D3227756D10058DF23 /* Kingfisher+ImagesFetching.swift in Sources */,
 				ADCD71B122773AD20058DF23 /* RepositoriesProviding.swift in Sources */,
+				ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */,
 				ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */,
 				ADCD71CE227756510058DF23 /* ImagesFetching.swift in Sources */,
 				ADCD71C7227754160058DF23 /* RepositoryOwner.swift in Sources */,

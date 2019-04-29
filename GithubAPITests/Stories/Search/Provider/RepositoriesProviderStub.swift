@@ -11,7 +11,7 @@ import Foundation
 
 class RepositoriesProviderStub: RepositoriesProviding {
     
-    func search(_ query: String, with completion: @escaping RepositoriesSearchProviderCompletion) {
+    var repositories: [Repository] {
         let repositoryOwners: [RepositoryOwner] = [
             RepositoryOwner(login: "Iron Man", avatarURL: "github_pic_1.jpg"),
             RepositoryOwner(login: "Thor", avatarURL: "github_pic_2.jpg"),
@@ -38,7 +38,7 @@ class RepositoriesProviderStub: RepositoriesProviding {
             
             Repository(id: 3,
                        fullName: "dionyziz/canvas-tetris",
-                       description: "It is really nice game Tetris, this text should not fit the screen, so we need to add three dots at the end of the label",
+                       description: "short description",
                        language: "Swift",
                        forksCount: 2,
                        watchers: 24,
@@ -52,11 +52,12 @@ class RepositoriesProviderStub: RepositoriesProviding {
                        watchers: 24,
                        owner: repositoryOwners[3])
         ]
-        
-        let searchResponse = RepositoriesSearchResponse(totalCount: repositories.count,
-                                                        incompleteResults: false,
-                                                        repos: repositories)
-        completion(.success(searchResponse))
+    
+        return repositories
+    }
+
+    func search(_ query: String, with completion: @escaping RepositoriesSearchProviderCompletion) {
+        completion(.success(repositories))
     }
     
 }

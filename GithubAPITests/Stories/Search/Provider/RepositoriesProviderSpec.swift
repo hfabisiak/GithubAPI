@@ -46,7 +46,7 @@ class RepositoriesProviderSpec: QuickSpec {
                     waitUntil(timeout: 1.0, action: { done in
                         sut.search("tetris", with: { result in
                             switch result {
-                            case let .success(response) where response.repos.count == 30:
+                            case let .success(response) where response.count == 30:
                                 done()
                             default:
                                 break
