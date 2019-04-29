@@ -38,20 +38,35 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         navigationItem.title = "Repositories"
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.dimsBackgroundDuringPresentation = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-        searchController.searchBar.placeholder = "Search repository by name"
         navigationItem.searchController = searchController
+        
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search repository by name"
         searchController.searchResultsUpdater = self
+    
         setupTableView()
     }
     
     private func setupTableView() {
         searchView.resultsTableView.register(cell: RepositoryCell.self)
         searchView.resultsTableView.dataSource = self
+    }
+    
+    @objc private func reloadResults(for query: String) {
+        repositoriesProvider.search(query) { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self?.searchView.resultsTableView.reloadData()
+                }
+            default: break
+            }
+        }
     }
     
     // MARK: - Private
@@ -65,15 +80,8 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        repositoriesProvider.search(searchController.searchBar.text ?? "") { [weak self] result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self?.searchView.resultsTableView.reloadData()
-                }
-            default: break
-            }
-        }
+        guard let query = searchController.searchBar.text else { return }
+        reloadResults(for: query)
     }
 }
 
@@ -90,7 +98,8 @@ extension SearchViewController: UITableViewDataSource {
             switch result {
             case let .success(image):
                 cell.avatarImageView.image = image
-            default: break
+            case .failure(_):
+                break
             }
         }
         cell.topLabel.text = model.fullName

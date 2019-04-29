@@ -27,7 +27,6 @@ class SearchViewControllerSpec: QuickSpec {
                                            imagesFetcher: imagesFetcherStub)
                 navigationController = UINavigationController(rootViewController: sut)
                 _ = sut.view
-                record = true
             }
             
             afterEach {
@@ -35,13 +34,11 @@ class SearchViewControllerSpec: QuickSpec {
                 sut = nil
                 imagesFetcherStub = nil
                 repositoriesProviderStub = nil
-                record = false
             }
             
             describe("loaded view") {
                 it("should be of type SearchView") {
                     expect(sut.view).to(beAKindOf(SearchView.self))
-                    expect(sut.searchView).to(beAKindOf(SearchView.self))
                 }
             }
             
@@ -107,6 +104,34 @@ class SearchViewControllerSpec: QuickSpec {
                         _ = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, cellForRowAt: IndexPath(row: 10, section: 1))
                     }.to(throwAssertion())
                 }
+                
+                it("should throw assertion when trying to dequeue cell for non existing indexPath") {
+                    expect{
+                        _ = sut.searchView.resultsTableView.dequeueReusableCell(for: IndexPath(row: 10, section: 1))
+                        }.to(throwAssertion())
+                }
+            }
+            
+            context("Searching for repositories") {
+                
+                it("should have results updating") {
+                    expect(sut.searchController.searchResultsUpdater).toNot(beNil())
+                }
+                
+                it("should update results when typing") {
+                    sut.searchController.searchBar.text = "ios"
+                    sut.searchController.searchResultsUpdater?.updateSearchResults(for: sut.searchController)
+                    waitUntil(timeout: 1.0, action: { isDoneCompletion in
+                        expect(repositoriesProviderStub.repositories.isEmpty).to(beTrue())
+                        isDoneCompletion()
+                    })
+                }
+                
+//                it("should cancel all previous requests when typing") {
+//                    var numberOfRequests = sut.
+//                    sut.searchController.searchBar.text = "ios"
+//
+//                }
             }
             
             describe("required initializer") {

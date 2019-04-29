@@ -47,6 +47,11 @@
 		ADCD71ED227773940058DF23 /* SearchErrorsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71EC227773940058DF23 /* SearchErrorsResponse.swift */; };
 		ADCD71F1227774690058DF23 /* RepoSearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71F0227774690058DF23 /* RepoSearchError.swift */; };
 		ADCD71F3227775210058DF23 /* repositories_search_failure.json in Resources */ = {isa = PBXBuildFile; fileRef = ADCD71F2227775210058DF23 /* repositories_search_failure.json */; };
+		ADCD71F622777F6A0058DF23 /* RepoSearchErrorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71F522777F6A0058DF23 /* RepoSearchErrorSpec.swift */; };
+		ADCD71FB227793D50058DF23 /* RepositoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71FA227793D50058DF23 /* RepositoryDetailsViewController.swift */; };
+		ADCD72022277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72012277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift */; };
+		ADCD7204227795DC0058DF23 /* RepositoryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7203227795DC0058DF23 /* RepositoryDetailsView.swift */; };
+		ADCD72062277997C0058DF23 /* RepositoryDetailsViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72052277997C0058DF23 /* RepositoryDetailsViewSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +121,11 @@
 		ADCD71EC227773940058DF23 /* SearchErrorsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorsResponse.swift; sourceTree = "<group>"; };
 		ADCD71F0227774690058DF23 /* RepoSearchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchError.swift; sourceTree = "<group>"; };
 		ADCD71F2227775210058DF23 /* repositories_search_failure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = repositories_search_failure.json; sourceTree = "<group>"; };
+		ADCD71F522777F6A0058DF23 /* RepoSearchErrorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchErrorSpec.swift; sourceTree = "<group>"; };
+		ADCD71FA227793D50058DF23 /* RepositoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewController.swift; sourceTree = "<group>"; };
+		ADCD72012277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewControllerSpec.swift; sourceTree = "<group>"; };
+		ADCD7203227795DC0058DF23 /* RepositoryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsView.swift; sourceTree = "<group>"; };
+		ADCD72052277997C0058DF23 /* RepositoryDetailsViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +222,7 @@
 		ADCD719E22771CE20058DF23 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				ADCD71F9227793CB0058DF23 /* Details */,
 				ADCD719F22771CEC0058DF23 /* Search */,
 			);
 			path = Stories;
@@ -248,6 +259,7 @@
 		ADCD71A622772C420058DF23 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				ADCD71FD227794040058DF23 /* Details */,
 				ADCD71A722772C470058DF23 /* Search */,
 			);
 			path = Stories;
@@ -258,6 +270,7 @@
 			children = (
 				ADCD71A922772C640058DF23 /* SearchViewControllerSpec.swift */,
 				ADCD71AD227734640058DF23 /* SearchViewSpec.swift */,
+				ADCD71F422777F5B0058DF23 /* Model */,
 				ADCD71E52277622A0058DF23 /* RepositoryCell */,
 				ADCD71B422773B360058DF23 /* Provider */,
 			);
@@ -354,6 +367,40 @@
 				ADCD71E6227762340058DF23 /* RepositoryCellSpec.swift */,
 			);
 			path = RepositoryCell;
+			sourceTree = "<group>";
+		};
+		ADCD71F422777F5B0058DF23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71F522777F6A0058DF23 /* RepoSearchErrorSpec.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ADCD71F9227793CB0058DF23 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71FC227793FE0058DF23 /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		ADCD71FC227793FE0058DF23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71FA227793D50058DF23 /* RepositoryDetailsViewController.swift */,
+				ADCD7203227795DC0058DF23 /* RepositoryDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ADCD71FD227794040058DF23 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD72012277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift */,
+				ADCD72052277997C0058DF23 /* RepositoryDetailsViewSpec.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,7 +542,9 @@
 				ADCD71D3227756D10058DF23 /* Kingfisher+ImagesFetching.swift in Sources */,
 				ADCD71B122773AD20058DF23 /* RepositoriesProviding.swift in Sources */,
 				ADCD71ED227773940058DF23 /* SearchErrorsResponse.swift in Sources */,
+				ADCD71FB227793D50058DF23 /* RepositoryDetailsViewController.swift in Sources */,
 				ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */,
+				ADCD7204227795DC0058DF23 /* RepositoryDetailsView.swift in Sources */,
 				ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */,
 				ADCD71CE227756510058DF23 /* ImagesFetching.swift in Sources */,
 				ADCD71C7227754160058DF23 /* RepositoryOwner.swift in Sources */,
@@ -513,8 +562,11 @@
 			files = (
 				ADCD71D8227758D50058DF23 /* ImagesFetcherStub.swift in Sources */,
 				ADCD71B822773BF20058DF23 /* RepositoriesProviderStub.swift in Sources */,
+				ADCD72022277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift in Sources */,
+				ADCD72062277997C0058DF23 /* RepositoryDetailsViewSpec.swift in Sources */,
 				ADCD71CB2277560C0058DF23 /* Bundle+TestBundle.swift in Sources */,
 				ADCD71A522771D320058DF23 /* AppDelegateSpec.swift in Sources */,
+				ADCD71F622777F6A0058DF23 /* RepoSearchErrorSpec.swift in Sources */,
 				ADCD71AE227734640058DF23 /* SearchViewSpec.swift in Sources */,
 				ADCD71AA22772C640058DF23 /* SearchViewControllerSpec.swift in Sources */,
 				ADCD71E7227762340058DF23 /* RepositoryCellSpec.swift in Sources */,

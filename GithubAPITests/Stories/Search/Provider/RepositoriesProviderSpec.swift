@@ -36,6 +36,15 @@ class RepositoriesProviderSpec: QuickSpec {
                 expect(sut).to(beAKindOf(RepositoriesProviding.self))
             }
             
+            describe("search request when url is malformed") {
+                it("should throw an assertion when url is malformed") {
+                    sut = RepositoriesProvider(decoder: jsonDecoderStub, session: urlSessionStub, apiRoute: "this is wrong route")
+                    expect{
+                        sut.search("tetris", with: { _ in })
+                    }.to(throwAssertion())
+                }
+            }
+            
             describe("search request") {
                 it("should have correct host name and path") {
                     stub(condition: isHost("api.github.com") && isPath("/search/repositories")) { dada in
@@ -43,11 +52,11 @@ class RepositoriesProviderSpec: QuickSpec {
                         return fixture(filePath: stubPath!, headers: ["Content-Type": "application/json"])
                     }
                     
-                    waitUntil(timeout: 1.0, action: { done in
+                    waitUntil(timeout: 1.0, action: { isDoneCompletion in
                         sut.search("tetris", with: { result in
                             switch result {
                             case let .success(response) where response.count == 30:
-                                done()
+                                isDoneCompletion()
                             default:
                                 break
                             }
