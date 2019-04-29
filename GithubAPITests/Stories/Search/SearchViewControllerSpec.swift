@@ -46,6 +46,20 @@ class SearchViewControllerSpec: QuickSpec {
                 it("should have correct title") {
                     expect(sut.navigationItem.title) == "Repositories"
                 }
+                
+                it("should not hide search bar when scrolling") {
+                    expect(sut.navigationItem.hidesSearchBarWhenScrolling) == false
+                }
+                
+                describe("searchController") {
+                    it("should not be nil") {
+                        expect(sut.navigationItem.searchController).toNot(beNil())
+                    }
+                    
+                    it("should have correct placeholder") {
+                        expect(sut.navigationItem.searchController?.searchBar.placeholder) == "Search repository by name"
+                    }
+                }
             }
             
             context("when it is wrapped in UINavigationController") {
@@ -53,7 +67,13 @@ class SearchViewControllerSpec: QuickSpec {
                     expect(sut.navigationController?.navigationBar.prefersLargeTitles) == true
                 }
             }
-
+            
+            describe("required initializer") {
+                it("should return nil") {
+                    expect(SearchViewController(coder: NSCoder())).to(beNil())
+                }
+            }
+            
             it("should match snapshot on iPhone SE") {
                 assertSnapshot(matching: navigationController, as: .image(on: .iPhoneSe))
             }
