@@ -1,0 +1,46 @@
+//
+//  RepositoryCellSpec.swift
+//  GithubAPITests
+//
+//  Created by Hubert Fabisiak on 29/04/2019.
+//  Copyright © 2019 HubertFabisiak. All rights reserved.
+//
+
+@testable import GithubAPI
+import Quick
+import Nimble
+import SnapshotTesting
+
+class RepositoryCellSpec: QuickSpec {
+    
+    override func spec() {
+        describe("RepositoryCell") {
+            var sut: RepositoryCell!
+            
+            beforeEach {
+                sut = RepositoryCell()
+                sut.avatarImageView.image = UIImage(named: "github_pic_1.jpg", in: Bundle.testBundle, compatibleWith: nil)
+                sut.topLabel.text = "I am Iron Man!"
+                sut.bottomLabel.text = "This is Iron man and his repository. I have repulsors so I can eleminate my enemies"
+            }
+            
+            afterEach {
+                sut = nil
+            }
+            
+            it("should match snapshot") {
+                assertSnapshot(matching: sut, as: .image(size: CGSize(width: 375.0, height: 75.0)))
+            }
+            
+            describe("required initializer") {
+                it("should return nil") {
+                    expect(RepositoryCell(coder: NSCoder())).to(beNil())
+                }
+            }
+            
+        }
+    }
+    
+    
+}
+

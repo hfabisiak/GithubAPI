@@ -12,8 +12,10 @@ class SearchViewController: UIViewController {
     
     typealias SearchRepositoryControllerFactory = () -> UISearchController
     
-    init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) }) {
+    init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) },
+         repositoriesProvider: RepositoriesProviding = RepositoriesProvider()) {
         self.searchControllerFactory = searchControllerFactory
+        self.repositoriesProvider = repositoriesProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,6 +46,7 @@ class SearchViewController: UIViewController {
     // MARK: - Private
     
     private let searchControllerFactory: SearchRepositoryControllerFactory
+    private let repositoriesProvider: RepositoriesProviding
     
     required init?(coder _: NSCoder) { return nil }
 }

@@ -17,17 +17,20 @@ class SearchViewControllerSpec: QuickSpec {
         describe("SearchViewController") {
             var sut: SearchViewController!
             var navigationController: UINavigationController!
+            var repositoriesProviderStub: RepositoriesProviding!
             
             beforeEach {
-                sut = SearchViewController()
+                repositoriesProviderStub = RepositoriesProviderStub()
+                sut = SearchViewController(repositoriesProvider: repositoriesProviderStub)
                 navigationController = UINavigationController(rootViewController: sut)
                 _ = sut.view
                 record = true
             }
             
             afterEach {
-                sut = nil
                 navigationController = nil
+                sut = nil
+                repositoriesProviderStub = nil
                 record = false
             }
             
@@ -66,6 +69,11 @@ class SearchViewControllerSpec: QuickSpec {
                 it("should prefer large titles") {
                     expect(sut.navigationController?.navigationBar.prefersLargeTitles) == true
                 }
+            }
+            
+            describe("displaying search results") {
+                
+                
             }
             
             describe("required initializer") {
