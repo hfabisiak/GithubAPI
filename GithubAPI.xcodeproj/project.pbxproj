@@ -44,6 +44,9 @@
 		ADCD71E422775ED20058DF23 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71E322775ED20058DF23 /* RepositoryCell.swift */; };
 		ADCD71E7227762340058DF23 /* RepositoryCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71E6227762340058DF23 /* RepositoryCellSpec.swift */; };
 		ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71E8227764F10058DF23 /* UITableView+Extensions.swift */; };
+		ADCD71ED227773940058DF23 /* SearchErrorsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71EC227773940058DF23 /* SearchErrorsResponse.swift */; };
+		ADCD71F1227774690058DF23 /* RepoSearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71F0227774690058DF23 /* RepoSearchError.swift */; };
+		ADCD71F3227775210058DF23 /* repositories_search_failure.json in Resources */ = {isa = PBXBuildFile; fileRef = ADCD71F2227775210058DF23 /* repositories_search_failure.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,9 @@
 		ADCD71E322775ED20058DF23 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		ADCD71E6227762340058DF23 /* RepositoryCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCellSpec.swift; sourceTree = "<group>"; };
 		ADCD71E8227764F10058DF23 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		ADCD71EC227773940058DF23 /* SearchErrorsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchErrorsResponse.swift; sourceTree = "<group>"; };
+		ADCD71F0227774690058DF23 /* RepoSearchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchError.swift; sourceTree = "<group>"; };
+		ADCD71F2227775210058DF23 /* repositories_search_failure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = repositories_search_failure.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +289,8 @@
 				ADCD71C2227741040058DF23 /* RepositoriesSearchResponse.swift */,
 				ADCD71C4227743380058DF23 /* Repository.swift */,
 				ADCD71C6227754160058DF23 /* RepositoryOwner.swift */,
+				ADCD71EC227773940058DF23 /* SearchErrorsResponse.swift */,
+				ADCD71F0227774690058DF23 /* RepoSearchError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD71C0227740140058DF23 /* repositories_search.json */,
+				ADCD71F2227775210058DF23 /* repositories_search_failure.json */,
 			);
 			path = Fixture;
 			sourceTree = "<group>";
@@ -444,6 +453,7 @@
 				ADCD71C1227740150058DF23 /* repositories_search.json in Resources */,
 				ADCD71E0227759F30058DF23 /* github_pic_1.jpg in Resources */,
 				ADCD71DC227759910058DF23 /* github_pic_2.jpg in Resources */,
+				ADCD71F3227775210058DF23 /* repositories_search_failure.json in Resources */,
 				ADCD71DE227759CA0058DF23 /* github_pic_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,9 +490,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCD71F1227774690058DF23 /* RepoSearchError.swift in Sources */,
 				ADCD71C5227743380058DF23 /* Repository.swift in Sources */,
 				ADCD71D3227756D10058DF23 /* Kingfisher+ImagesFetching.swift in Sources */,
 				ADCD71B122773AD20058DF23 /* RepositoriesProviding.swift in Sources */,
+				ADCD71ED227773940058DF23 /* SearchErrorsResponse.swift in Sources */,
 				ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */,
 				ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */,
 				ADCD71CE227756510058DF23 /* ImagesFetching.swift in Sources */,

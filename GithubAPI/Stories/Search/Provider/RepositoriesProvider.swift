@@ -27,9 +27,14 @@ class RepositoriesProvider: RepositoriesProviding {
         session.dataTask(with: url) { [weak self] data, response, error in
             if let error = error {
                 completion(.failure(error))
-            } else if let data = data, let searchResponse = try? self?.decoder.decode(RepositoriesSearchResponse.self, from: data) {
-                self?.repositories.append(contentsOf: searchResponse.repos)
-                completion(.success(searchResponse.repos))
+            } else if let data = data {
+                if let searchResponse = try? self?.decoder.decode(RepositoriesSearchResponse.self, from: data) {
+                    self?.repositories.removeAll()
+                    self?.repositories.append(contentsOf: searchResponse.repos)
+                    completion(.success(searchResponse.repos))
+                } else if let errorData = try? self?.decoder.decode(SearchErrorsResponse.self, from: data) {
+                    completion(.failure(RepoSearchError.searchError(errorData)))
+                }
             }
         }.resume()
     }

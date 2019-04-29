@@ -66,6 +66,10 @@ class SearchViewControllerSpec: QuickSpec {
                     it("should have correct placeholder") {
                         expect(sut.navigationItem.searchController?.searchBar.placeholder) == "Search repository by name"
                     }
+                    
+                    it("should not dim background") {
+                        expect(sut.searchController.dimsBackgroundDuringPresentation) == false
+                    }
                 }
             }
             

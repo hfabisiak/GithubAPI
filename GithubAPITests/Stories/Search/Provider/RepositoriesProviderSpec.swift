@@ -38,7 +38,7 @@ class RepositoriesProviderSpec: QuickSpec {
             
             describe("search request") {
                 it("should have correct host name and path") {
-                    stub(condition: isHost("api.github.com") && isPath("/search/repositories")) { _ in
+                    stub(condition: isHost("api.github.com") && isPath("/search/repositories")) { dada in
                         let stubPath = OHPathForFile("repositories_search.json", type(of: self))
                         return fixture(filePath: stubPath!, headers: ["Content-Type": "application/json"])
                     }

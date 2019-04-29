@@ -41,9 +41,11 @@ class SearchViewController: UIViewController {
         navigationItem.title = "Repositories"
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.dimsBackgroundDuringPresentation = false
         navigationController?.navigationBar.prefersLargeTitles = true
         searchController.searchBar.placeholder = "Search repository by name"
         navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
         setupTableView()
     }
     
@@ -59,6 +61,20 @@ class SearchViewController: UIViewController {
     private let imagesFetcher: ImagesFetching
     
     required init?(coder _: NSCoder) { return nil }
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        repositoriesProvider.search(searchController.searchBar.text ?? "") { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self?.searchView.resultsTableView.reloadData()
+                }
+            default: break
+            }
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {
