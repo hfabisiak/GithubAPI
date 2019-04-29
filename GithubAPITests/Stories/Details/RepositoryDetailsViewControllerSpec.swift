@@ -55,6 +55,57 @@ class RepositoryDetailsViewControllerSpec: QuickSpec {
                 }
             }
             
+            describe("displaying list of repository details") {
+                it("should have RepositoryDetailsCell registered") {
+                    let cell = sut.repositoryDetailsView.detailsTableView.dequeueReusableCell(withIdentifier: RepositoryDetailsCell.reuseIdentifier) as? RepositoryDetailsCell
+                    expect(cell).toNot(beNil())
+                }
+                
+                it("should have cell properly configured") {
+                    let cell = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? RepositoryDetailsCell
+                    expect(cell).notTo(beNil())
+                    expect(cell?.titleLabel.text) == "Name:"
+                    expect(cell?.detailsLabel.text) == repository.fullName
+                }
+                
+                it("should have 2 sections") {
+                    let numberOfSections = sut.repositoryDetailsView.detailsTableView.dataSource?.numberOfSections?(in: sut.repositoryDetailsView.detailsTableView)
+                    expect(numberOfSections) == 2
+                }
+                
+                describe("sections") {
+                    describe("1st section") {
+                        it("should have 6 rows") {
+                            let numberOfRows = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, numberOfRowsInSection: 0)
+                            expect(numberOfRows) == 6
+                        }
+                        
+                        it("should have correct title") {
+                            let title = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView?(sut.repositoryDetailsView.detailsTableView, titleForHeaderInSection: 0)
+                            expect(title) == "Details"
+                        }
+                    }
+                    
+                    describe("2nd section") {
+                        it("should have 1 row") {
+                            let numberOfRows = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, numberOfRowsInSection: 1)
+                            expect(numberOfRows) == 1
+                        }
+                        
+                        it("should have correct title") {
+                            let title = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView?(sut.repositoryDetailsView.detailsTableView, titleForHeaderInSection: 1)
+                            expect(title) == "Owner"
+                        }
+                    }
+                }
+                
+                it("should have correct row height") {
+                    expect(sut.repositoryDetailsView.detailsTableView.estimatedRowHeight) == 50.0
+                    expect(sut.repositoryDetailsView.detailsTableView.rowHeight) == UITableView.automaticDimension
+                }
+                
+            }
+            
             describe("required initializer") {
                 it("should return nil") {
                     expect(RepositoryDetailsViewController(coder: NSCoder())).to(beNil())

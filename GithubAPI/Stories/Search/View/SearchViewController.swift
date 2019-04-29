@@ -53,6 +53,7 @@ class SearchViewController: UIViewController {
         
         searchController.dimsBackgroundDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search repository by name"
         searchController.searchResultsUpdater = self
     
@@ -60,7 +61,6 @@ class SearchViewController: UIViewController {
     }
     
     private func setupTableView() {
-        searchView.resultsTableView.register(cell: RepositoryCell.self)
         searchView.resultsTableView.dataSource = self
         searchView.resultsTableView.delegate = self
     }

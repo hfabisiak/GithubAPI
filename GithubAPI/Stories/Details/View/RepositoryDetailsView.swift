@@ -39,6 +39,9 @@ extension RepositoryDetailsView {
         static var detailsTableView: UITableView {
             let tableView = UITableView(frame: .zero, style: .plain)
             tableView.allowsSelection = false
+            tableView.register(cell: RepositoryDetailsCell.self)
+            tableView.estimatedRowHeight = 50.0
+            tableView.rowHeight = UITableView.automaticDimension
             return tableView
         }
         

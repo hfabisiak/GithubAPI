@@ -71,6 +71,10 @@ class SearchViewControllerSpec: QuickSpec {
                     it("should not dim background") {
                         expect(sut.searchController.dimsBackgroundDuringPresentation) == false
                     }
+                    
+                    it("should not hide navigation bar during presentation") {
+                        expect(sut.searchController.hidesNavigationBarDuringPresentation) == false
+                    }
                 }
             }
             
