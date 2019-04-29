@@ -52,6 +52,9 @@
 		ADCD72022277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72012277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift */; };
 		ADCD7204227795DC0058DF23 /* RepositoryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7203227795DC0058DF23 /* RepositoryDetailsView.swift */; };
 		ADCD72062277997C0058DF23 /* RepositoryDetailsViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72052277997C0058DF23 /* RepositoryDetailsViewSpec.swift */; };
+		ADCD720822779D3D0058DF23 /* RepositoryDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD720722779D3D0058DF23 /* RepositoryDetailsCell.swift */; };
+		ADCD720A2277A32A0058DF23 /* ColorsPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72092277A32A0058DF23 /* ColorsPalette.swift */; };
+		ADCD720C2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD720B2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		ADCD72012277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewControllerSpec.swift; sourceTree = "<group>"; };
 		ADCD7203227795DC0058DF23 /* RepositoryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsView.swift; sourceTree = "<group>"; };
 		ADCD72052277997C0058DF23 /* RepositoryDetailsViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewSpec.swift; sourceTree = "<group>"; };
+		ADCD720722779D3D0058DF23 /* RepositoryDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsCell.swift; sourceTree = "<group>"; };
+		ADCD72092277A32A0058DF23 /* ColorsPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsPalette.swift; sourceTree = "<group>"; };
+		ADCD720B2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsCellSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD7175227702290058DF23 /* Assets.xcassets */,
+				ADCD72092277A32A0058DF23 /* ColorsPalette.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -390,6 +397,7 @@
 			children = (
 				ADCD71FA227793D50058DF23 /* RepositoryDetailsViewController.swift */,
 				ADCD7203227795DC0058DF23 /* RepositoryDetailsView.swift */,
+				ADCD720722779D3D0058DF23 /* RepositoryDetailsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,6 +407,7 @@
 			children = (
 				ADCD72012277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift */,
 				ADCD72052277997C0058DF23 /* RepositoryDetailsViewSpec.swift */,
+				ADCD720B2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -548,7 +557,9 @@
 				ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */,
 				ADCD71CE227756510058DF23 /* ImagesFetching.swift in Sources */,
 				ADCD71C7227754160058DF23 /* RepositoryOwner.swift in Sources */,
+				ADCD720822779D3D0058DF23 /* RepositoryDetailsCell.swift in Sources */,
 				ADCD71E422775ED20058DF23 /* RepositoryCell.swift in Sources */,
+				ADCD720A2277A32A0058DF23 /* ColorsPalette.swift in Sources */,
 				ADCD71B322773AE30058DF23 /* RepositoriesProvider.swift in Sources */,
 				ADCD71AC22772DE80058DF23 /* SearchView.swift in Sources */,
 				ADCD716F227702280058DF23 /* AppDelegate.swift in Sources */,
@@ -567,6 +578,7 @@
 				ADCD71CB2277560C0058DF23 /* Bundle+TestBundle.swift in Sources */,
 				ADCD71A522771D320058DF23 /* AppDelegateSpec.swift in Sources */,
 				ADCD71F622777F6A0058DF23 /* RepoSearchErrorSpec.swift in Sources */,
+				ADCD720C2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift in Sources */,
 				ADCD71AE227734640058DF23 /* SearchViewSpec.swift in Sources */,
 				ADCD71AA22772C640058DF23 /* SearchViewControllerSpec.swift in Sources */,
 				ADCD71E7227762340058DF23 /* RepositoryCellSpec.swift in Sources */,

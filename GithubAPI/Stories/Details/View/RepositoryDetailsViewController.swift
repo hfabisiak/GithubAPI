@@ -25,6 +25,12 @@ class RepositoryDetailsViewController: UIViewController {
         view = RepositoryDetailsView()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = repository.fullName
+        navigationItem.largeTitleDisplayMode = .never
+    }
+    
     // MARK: - Private
     
     private let repository: Repository

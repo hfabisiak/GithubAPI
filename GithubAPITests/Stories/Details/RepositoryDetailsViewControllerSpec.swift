@@ -43,6 +43,16 @@ class RepositoryDetailsViewControllerSpec: QuickSpec {
                         expect(sut.repositoryDetailsView).to(beAnInstanceOf(RepositoryDetailsView.self))
                     }
                 }
+                
+                describe("navigation item") {
+                    it("should never display large titles") {
+                        expect(sut.navigationItem.largeTitleDisplayMode) == .never
+                    }
+                    
+                    it("should have correct title") {
+                        expect(sut.navigationItem.title) == repository.fullName
+                    }
+                }
             }
             
             describe("required initializer") {

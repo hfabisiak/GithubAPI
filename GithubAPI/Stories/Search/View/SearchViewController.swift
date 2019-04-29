@@ -26,6 +26,10 @@ class SearchViewController: UIViewController {
         return view as! SearchView
     }
     
+    // MARK: - Helpers
+    
+    lazy var pushController: ((UIViewController, Bool) -> Void)? = navigationController?.pushViewController(_:animated:)
+    
     // MARK: - Child controllers
     
     lazy var searchController: UISearchController = searchControllerFactory()
@@ -38,6 +42,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
+
         navigationController?.navigationBar.prefersLargeTitles = true
         
         navigationItem.title = "Repositories"
@@ -46,6 +52,7 @@ class SearchViewController: UIViewController {
         navigationItem.searchController = searchController
         
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search repository by name"
         searchController.searchResultsUpdater = self
     
@@ -55,6 +62,7 @@ class SearchViewController: UIViewController {
     private func setupTableView() {
         searchView.resultsTableView.register(cell: RepositoryCell.self)
         searchView.resultsTableView.dataSource = self
+        searchView.resultsTableView.delegate = self
     }
     
     @objc private func reloadResults(for query: String) {
@@ -83,6 +91,15 @@ extension SearchViewController: UISearchResultsUpdating {
         guard let query = searchController.searchBar.text else { return }
         reloadResults(for: query)
     }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repositoryDetailsViewController = RepositoryDetailsViewController(repository: repositoriesProvider.repositories[indexPath.row])
+        pushController?(repositoryDetailsViewController, true)
+    }
+    
 }
 
 extension SearchViewController: UITableViewDataSource {

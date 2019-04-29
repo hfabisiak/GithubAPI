@@ -36,6 +36,10 @@ class SearchViewControllerSpec: QuickSpec {
                 repositoriesProviderStub = nil
             }
             
+            it("should have definesPresentationContext set to yes") {
+                expect(sut.definesPresentationContext) == true
+            }
+            
             describe("loaded view") {
                 it("should be of type SearchView") {
                     expect(sut.view).to(beAKindOf(SearchView.self))
@@ -109,6 +113,15 @@ class SearchViewControllerSpec: QuickSpec {
                     expect{
                         _ = sut.searchView.resultsTableView.dequeueReusableCell(for: IndexPath(row: 10, section: 1))
                         }.to(throwAssertion())
+                }
+                
+                it("should show repository details after choosing one from the list") {
+                    var invokedPushController: [(Bool, UIViewController)] = []
+                    sut.pushController = { controller, animated in
+                        invokedPushController.append((animated, controller))
+                    }
+                    sut.searchView.resultsTableView.delegate?.tableView?(sut.searchView.resultsTableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+                    expect(invokedPushController).to(haveCount(1))
                 }
             }
             
