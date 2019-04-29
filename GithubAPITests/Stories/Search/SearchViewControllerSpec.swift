@@ -91,7 +91,7 @@ class SearchViewControllerSpec: QuickSpec {
                     let cell = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, cellForRowAt: IndexPath(row: 2, section: 0)) as? RepositoryCell
                     expect(cell?.avatarImageView.image?.pngData()) == UIImage(named: "github_pic_3.png", in: Bundle.testBundle, compatibleWith: nil)?.pngData()
                     expect(cell?.topLabel.text) == "dionyziz/canvas-tetris"
-                    expect(cell?.bottomLabel.text) == "short description"
+                    expect(cell?.bottomLabel.text) == "-"
                 }
                 
                 it("should have correct row height") {

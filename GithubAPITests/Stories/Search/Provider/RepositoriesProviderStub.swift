@@ -38,7 +38,7 @@ class RepositoriesProviderStub: RepositoriesProviding {
             
             Repository(id: 3,
                        fullName: "dionyziz/canvas-tetris",
-                       description: "short description",
+                       description: nil,
                        language: "Swift",
                        forksCount: 2,
                        watchers: 24,
