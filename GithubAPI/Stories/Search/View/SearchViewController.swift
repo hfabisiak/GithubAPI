@@ -10,4 +10,20 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var searchView: SearchView {
+        return view as! SearchView
+    }
+    
+    override func loadView() {
+        view = SearchView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Repositories"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+
 }
