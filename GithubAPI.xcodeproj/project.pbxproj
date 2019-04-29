@@ -8,20 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		ADCD716F227702280058DF23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD716E227702280058DF23 /* AppDelegate.swift */; };
-		ADCD7171227702280058DF23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7170227702280058DF23 /* ViewController.swift */; };
 		ADCD7176227702290058DF23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADCD7175227702290058DF23 /* Assets.xcassets */; };
 		ADCD7179227702290058DF23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCD7177227702290058DF23 /* LaunchScreen.storyboard */; };
 		ADCD7184227713A90058DF23 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCD7183227713A90058DF23 /* SnapKit.framework */; };
+		ADCD719522771B800058DF23 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCD719422771B800058DF23 /* Quick.framework */; };
+		ADCD719722771B8B0058DF23 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCD719622771B8B0058DF23 /* Nimble.framework */; };
+		ADCD719922771B940058DF23 /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCD719822771B940058DF23 /* SnapshotTesting.framework */; };
+		ADCD719A22771BD40058DF23 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADCD719622771B8B0058DF23 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ADCD719B22771BD80058DF23 /* SnapshotTesting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADCD719822771B940058DF23 /* SnapshotTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ADCD719C22771BDB0058DF23 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADCD719422771B800058DF23 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71A022771CF90058DF23 /* SearchViewController.swift */; };
+		ADCD71A522771D320058DF23 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD71A422771D320058DF23 /* AppDelegateSpec.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADCD718E227717AF0058DF23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADCD7163227702280058DF23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADCD716A227702280058DF23;
+			remoteInfo = GithubAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ADCD719322771B6C0058DF23 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ADCD719C22771BDB0058DF23 /* Quick.framework in CopyFiles */,
+				ADCD719B22771BD80058DF23 /* SnapshotTesting.framework in CopyFiles */,
+				ADCD719A22771BD40058DF23 /* Nimble.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		ADCD716B227702280058DF23 /* GithubAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCD716E227702280058DF23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADCD7170227702280058DF23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ADCD7175227702290058DF23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADCD7178227702290058DF23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADCD717A227702290058DF23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADCD7183227713A90058DF23 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		ADCD7189227717AF0058DF23 /* GithubAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADCD718D227717AF0058DF23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADCD719422771B800058DF23 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		ADCD719622771B8B0058DF23 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		ADCD719822771B940058DF23 /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
+		ADCD71A022771CF90058DF23 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		ADCD71A422771D320058DF23 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +71,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADCD7186227717AF0058DF23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADCD719922771B940058DF23 /* SnapshotTesting.framework in Frameworks */,
+				ADCD719722771B8B0058DF23 /* Nimble.framework in Frameworks */,
+				ADCD719522771B800058DF23 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -40,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD716D227702280058DF23 /* GithubAPI */,
+				ADCD718A227717AF0058DF23 /* GithubAPITests */,
 				ADCD716C227702280058DF23 /* Products */,
 				ADCD7182227713A90058DF23 /* Frameworks */,
 			);
@@ -49,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD716B227702280058DF23 /* GithubAPI.app */,
+				ADCD7189227717AF0058DF23 /* GithubAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,10 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				ADCD716E227702280058DF23 /* AppDelegate.swift */,
-				ADCD7170227702280058DF23 /* ViewController.swift */,
-				ADCD7175227702290058DF23 /* Assets.xcassets */,
 				ADCD7177227702290058DF23 /* LaunchScreen.storyboard */,
 				ADCD717A227702290058DF23 /* Info.plist */,
+				ADCD719E22771CE20058DF23 /* Stories */,
+				ADCD719D22771CCD0058DF23 /* Assets */,
 			);
 			path = GithubAPI;
 			sourceTree = "<group>";
@@ -68,9 +118,61 @@
 		ADCD7182227713A90058DF23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADCD719822771B940058DF23 /* SnapshotTesting.framework */,
+				ADCD719622771B8B0058DF23 /* Nimble.framework */,
+				ADCD719422771B800058DF23 /* Quick.framework */,
 				ADCD7183227713A90058DF23 /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADCD718A227717AF0058DF23 /* GithubAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71A322771D230058DF23 /* Application */,
+				ADCD718D227717AF0058DF23 /* Info.plist */,
+			);
+			path = GithubAPITests;
+			sourceTree = "<group>";
+		};
+		ADCD719D22771CCD0058DF23 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD7175227702290058DF23 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		ADCD719E22771CE20058DF23 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD719F22771CEC0058DF23 /* Search */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
+		ADCD719F22771CEC0058DF23 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71A222771D0B0058DF23 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		ADCD71A222771D0B0058DF23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71A022771CF90058DF23 /* SearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ADCD71A322771D230058DF23 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD71A422771D320058DF23 /* AppDelegateSpec.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,9 +183,9 @@
 			buildConfigurationList = ADCD717D227702290058DF23 /* Build configuration list for PBXNativeTarget "GithubAPI" */;
 			buildPhases = (
 				ADCD7167227702280058DF23 /* Sources */,
+				ADCD718122770CD00058DF23 /* [Carthage] Copy frameworks */,
 				ADCD7168227702280058DF23 /* Frameworks */,
 				ADCD7169227702280058DF23 /* Resources */,
-				ADCD718122770CD00058DF23 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -93,6 +195,25 @@
 			productName = GithubAPI;
 			productReference = ADCD716B227702280058DF23 /* GithubAPI.app */;
 			productType = "com.apple.product-type.application";
+		};
+		ADCD7188227717AF0058DF23 /* GithubAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADCD7190227717AF0058DF23 /* Build configuration list for PBXNativeTarget "GithubAPITests" */;
+			buildPhases = (
+				ADCD7185227717AF0058DF23 /* Sources */,
+				ADCD7186227717AF0058DF23 /* Frameworks */,
+				ADCD7187227717AF0058DF23 /* Resources */,
+				ADCD719322771B6C0058DF23 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADCD718F227717AF0058DF23 /* PBXTargetDependency */,
+			);
+			name = GithubAPITests;
+			productName = GithubAPITests;
+			productReference = ADCD7189227717AF0058DF23 /* GithubAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,6 +227,11 @@
 				TargetAttributes = {
 					ADCD716A227702280058DF23 = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					ADCD7188227717AF0058DF23 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+						TestTargetID = ADCD716A227702280058DF23;
 					};
 				};
 			};
@@ -123,6 +249,7 @@
 			projectRoot = "";
 			targets = (
 				ADCD716A227702280058DF23 /* GithubAPI */,
+				ADCD7188227717AF0058DF23 /* GithubAPITests */,
 			);
 		};
 /* End PBXProject section */
@@ -137,10 +264,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADCD7187227717AF0058DF23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		ADCD718122770CD00058DF23 /* ShellScript */ = {
+		ADCD718122770CD00058DF23 /* [Carthage] Copy frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -150,6 +284,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
+			name = "[Carthage] Copy frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -166,12 +301,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADCD7171227702280058DF23 /* ViewController.swift in Sources */,
+				ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */,
 				ADCD716F227702280058DF23 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADCD7185227717AF0058DF23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADCD71A522771D320058DF23 /* AppDelegateSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADCD718F227717AF0058DF23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADCD716A227702280058DF23 /* GithubAPI */;
+			targetProxy = ADCD718E227717AF0058DF23 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ADCD7177227702290058DF23 /* LaunchScreen.storyboard */ = {
@@ -345,6 +496,57 @@
 			};
 			name = Release;
 		};
+		ADCD7191227717AF0058DF23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z89P8XC47S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = GithubAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.HubertFabisiak.GithubAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubAPI.app/GithubAPI";
+			};
+			name = Debug;
+		};
+		ADCD7192227717AF0058DF23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z89P8XC47S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = GithubAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.HubertFabisiak.GithubAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubAPI.app/GithubAPI";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -362,6 +564,15 @@
 			buildConfigurations = (
 				ADCD717E227702290058DF23 /* Debug */,
 				ADCD717F227702290058DF23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADCD7190227717AF0058DF23 /* Build configuration list for PBXNativeTarget "GithubAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADCD7191227717AF0058DF23 /* Debug */,
+				ADCD7192227717AF0058DF23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
