@@ -10,6 +10,7 @@ import Foundation
 
 protocol RepositoryPresenting {
     
-    func present(model: Repository, for cell: RepositoryCell)
+    func present(model: Repository,
+                 for cell: RepositoryCell)
     
 }

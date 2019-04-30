@@ -62,6 +62,7 @@
 		ADCD72182278557A0058DF23 /* RepositoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72172278557A0058DF23 /* RepositoryPresenter.swift */; };
 		ADCD721A227856040058DF23 /* RepositoryPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7219227856040058DF23 /* RepositoryPresenting.swift */; };
 		ADCD721C227856340058DF23 /* RepositoryDetailsPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721B227856340058DF23 /* RepositoryDetailsPresenting.swift */; };
+		ADCD721E227857C60058DF23 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721D227857C60058DF23 /* UITableViewCell+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,7 @@
 		ADCD72172278557A0058DF23 /* RepositoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPresenter.swift; sourceTree = "<group>"; };
 		ADCD7219227856040058DF23 /* RepositoryPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPresenting.swift; sourceTree = "<group>"; };
 		ADCD721B227856340058DF23 /* RepositoryDetailsPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsPresenting.swift; sourceTree = "<group>"; };
+		ADCD721D227857C60058DF23 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD71D2227756D10058DF23 /* Kingfisher+ImagesFetching.swift */,
+				ADCD721D227857C60058DF23 /* UITableViewCell+Extensions.swift */,
 				ADCD71E8227764F10058DF23 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
@@ -606,6 +609,7 @@
 				ADCD71AC22772DE80058DF23 /* SearchView.swift in Sources */,
 				ADCD716F227702280058DF23 /* AppDelegate.swift in Sources */,
 				ADCD720F2277B2230058DF23 /* RepositoryDetailsPresenter.swift in Sources */,
+				ADCD721E227857C60058DF23 /* UITableViewCell+Extensions.swift in Sources */,
 				ADCD71C3227741040058DF23 /* RepositoriesSearchResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

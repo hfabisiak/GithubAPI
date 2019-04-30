@@ -8,14 +8,6 @@
 
 import UIKit
 
-extension UITableViewCell {
-    
-    static var reuseIdentifier: String {
-        return String(describing: self)
-    }
-    
-}
-
 extension UITableView {
     
     func register<Cell: UITableViewCell>(cell: Cell.Type) {
