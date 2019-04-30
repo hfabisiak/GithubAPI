@@ -68,7 +68,6 @@
 		ADCD722722786FDA0058DF23 /* SearchReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD722622786FDA0058DF23 /* SearchReducer.swift */; };
 		ADCD722A227870AC0058DF23 /* SearchReducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7229227870AC0058DF23 /* SearchReducing.swift */; };
 		ADCD722C227872AD0058DF23 /* SearchServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD722B227872AD0058DF23 /* SearchServiceEvent.swift */; };
-		ADCD722E22787DFD0058DF23 /* SearchReducerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD722D22787DFD0058DF23 /* SearchReducerStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,7 +158,6 @@
 		ADCD722622786FDA0058DF23 /* SearchReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReducer.swift; sourceTree = "<group>"; };
 		ADCD7229227870AC0058DF23 /* SearchReducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReducing.swift; sourceTree = "<group>"; };
 		ADCD722B227872AD0058DF23 /* SearchServiceEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceEvent.swift; sourceTree = "<group>"; };
-		ADCD722D22787DFD0058DF23 /* SearchReducerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReducerStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -413,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				ADCD71F522777F6A0058DF23 /* RepoSearchErrorSpec.swift */,
-				ADCD722D22787DFD0058DF23 /* SearchReducerStub.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -661,7 +658,6 @@
 				ADCD71B822773BF20058DF23 /* RepositoriesProviderStub.swift in Sources */,
 				ADCD721322783FFE0058DF23 /* Repository+Init.swift in Sources */,
 				ADCD72022277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift in Sources */,
-				ADCD722E22787DFD0058DF23 /* SearchReducerStub.swift in Sources */,
 				ADCD72062277997C0058DF23 /* RepositoryDetailsViewSpec.swift in Sources */,
 				ADCD71CB2277560C0058DF23 /* Bundle+TestBundle.swift in Sources */,
 				ADCD71A522771D320058DF23 /* AppDelegateSpec.swift in Sources */,

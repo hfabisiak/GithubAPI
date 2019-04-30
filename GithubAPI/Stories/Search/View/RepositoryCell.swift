@@ -52,6 +52,7 @@ extension RepositoryCell {
         static var avatarImageView: UIImageView {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(named: "github_base_avatar")
             return imageView
         }
         

@@ -21,7 +21,7 @@ class RepositoryPresenter: RepositoryPresenting {
             case let .success(image):
                 cell.avatarImageView.image = image
             case .failure:
-                cell.avatarImageView.image = UIImage(named: "github_base_avatar")
+                break
             }
         }
         cell.topLabel.text = model.fullName
@@ -31,5 +31,4 @@ class RepositoryPresenter: RepositoryPresenting {
     // MARK: - Private
     
     private let imagesFetcher: ImagesFetching
-
 }
