@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class SearchViewController: UIViewController {
     
@@ -15,10 +14,10 @@ class SearchViewController: UIViewController {
     
     init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) },
          repositoriesProvider: RepositoriesProviding = RepositoriesProvider(),
-         imagesFetcher: ImagesFetching = KingfisherManager.shared) {
+         repositoryPresenter: RepositoryPresenting = RepositoryPresenter()) {
         self.searchControllerFactory = searchControllerFactory
         self.repositoriesProvider = repositoriesProvider
-        self.imagesFetcher = imagesFetcher
+        self.repositoryPresenter = repositoryPresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,10 +54,16 @@ class SearchViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search repository by name"
-        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
     
         setupTableView()
     }
+    
+    // MARK: - Private
+    
+    private let searchControllerFactory: SearchRepositoryControllerFactory
+    private let repositoriesProvider: RepositoriesProviding
+    private let repositoryPresenter: RepositoryPresenting
     
     private func setupTableView() {
         searchView.resultsTableView.dataSource = self
@@ -77,21 +82,16 @@ class SearchViewController: UIViewController {
         }
     }
     
-    // MARK: - Private
-    
-    private let searchControllerFactory: SearchRepositoryControllerFactory
-    private let repositoriesProvider: RepositoriesProviding
-    private let imagesFetcher: ImagesFetching
-    
     required init?(coder _: NSCoder) { return nil }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text else { return }
-        reloadResults(for: query)
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        reloadResults(for: searchText)
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension SearchViewController: UITableViewDelegate {
     
@@ -102,6 +102,8 @@ extension SearchViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
+
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,17 +112,7 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RepositoryCell = tableView.dequeueReusableCell(for: indexPath)
-        let model = repositoriesProvider.repositories[indexPath.row]
-        imagesFetcher.fetchImage(with: model.owner.avatarURL) { [cell] result in
-            switch result {
-            case let .success(image):
-                cell.avatarImageView.image = image
-            case .failure(_):
-                break
-            }
-        }
-        cell.topLabel.text = model.fullName
-        cell.bottomLabel.text = model.description ?? "-"
+        repositoryPresenter.present(model: repositoriesProvider.repositories[indexPath.row], for: cell)
         return cell
     }
 

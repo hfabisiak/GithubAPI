@@ -15,7 +15,7 @@ class RepositoryDetailsViewController: UIViewController {
     }
     
     init(repository: Repository,
-         repositoryDetailsPresenter: RepositoryDetailsPresenter = RepositoryDetailsPresenter()) {
+         repositoryDetailsPresenter: RepositoryDetailsPresenting = RepositoryDetailsPresenter()) {
         self.repository = repository
         self.repositoryDetailsPresenter = repositoryDetailsPresenter
         super.init(nibName: nil, bundle: nil)
@@ -37,7 +37,7 @@ class RepositoryDetailsViewController: UIViewController {
     // MARK: - Private
     
     private let repository: Repository
-    private let repositoryDetailsPresenter: RepositoryDetailsPresenter
+    private let repositoryDetailsPresenter: RepositoryDetailsPresenting
     
     private func setupTableView() {
         repositoryDetailsView.detailsTableView.dataSource = self

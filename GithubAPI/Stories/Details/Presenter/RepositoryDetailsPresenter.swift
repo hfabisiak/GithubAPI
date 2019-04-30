@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RepositoryDetailsPresenter {
+class RepositoryDetailsPresenter: RepositoryDetailsPresenting {
     
     func present(model: Repository, in cell: RepositoryDetailsCell, for indexPath: IndexPath) {
         let detailSpecific = RepositoryDetailsSpecifics.allCases[indexPath.row]

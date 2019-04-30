@@ -19,12 +19,14 @@ class SearchViewControllerSpec: QuickSpec {
             var navigationController: UINavigationController!
             var repositoriesProviderStub: RepositoriesProviding!
             var imagesFetcherStub: ImagesFetching!
+            var repositoryPresenterStub: RepositoryPresenting!
             
             beforeEach {
                 repositoriesProviderStub = RepositoriesProviderStub()
                 imagesFetcherStub = ImagesFetcherStub()
+                repositoryPresenterStub = RepositoryPresenter(imagesFetcher: imagesFetcherStub)
                 sut = SearchViewController(repositoriesProvider: repositoriesProviderStub,
-                                           imagesFetcher: imagesFetcherStub)
+                                           repositoryPresenter: repositoryPresenterStub)
                 navigationController = UINavigationController(rootViewController: sut)
                 _ = sut.view
             }
@@ -32,6 +34,7 @@ class SearchViewControllerSpec: QuickSpec {
             afterEach {
                 navigationController = nil
                 sut = nil
+                repositoryPresenterStub = nil
                 imagesFetcherStub = nil
                 repositoriesProviderStub = nil
             }
@@ -132,12 +135,11 @@ class SearchViewControllerSpec: QuickSpec {
             context("Searching for repositories") {
                 
                 it("should have results updating") {
-                    expect(sut.searchController.searchResultsUpdater).toNot(beNil())
+                    expect(sut.searchController.searchBar.delegate).toNot(beNil())
                 }
                 
                 it("should update results when typing") {
-                    sut.searchController.searchBar.text = "ios"
-                    sut.searchController.searchResultsUpdater?.updateSearchResults(for: sut.searchController)
+                    sut.searchController.searchBar.delegate?.searchBar?(sut.searchController.searchBar, textDidChange: "ios")
                     waitUntil(timeout: 1.0, action: { isDoneCompletion in
                         expect(repositoriesProviderStub.repositories.isEmpty).to(beTrue())
                         isDoneCompletion()

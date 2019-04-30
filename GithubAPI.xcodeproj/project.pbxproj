@@ -59,6 +59,9 @@
 		ADCD721122783F170058DF23 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721022783F170058DF23 /* License.swift */; };
 		ADCD721322783FFE0058DF23 /* Repository+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721222783FFE0058DF23 /* Repository+Init.swift */; };
 		ADCD7215227843730058DF23 /* RepositoryDetailsSpecifics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7214227843730058DF23 /* RepositoryDetailsSpecifics.swift */; };
+		ADCD72182278557A0058DF23 /* RepositoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72172278557A0058DF23 /* RepositoryPresenter.swift */; };
+		ADCD721A227856040058DF23 /* RepositoryPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7219227856040058DF23 /* RepositoryPresenting.swift */; };
+		ADCD721C227856340058DF23 /* RepositoryDetailsPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721B227856340058DF23 /* RepositoryDetailsPresenting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +143,9 @@
 		ADCD721022783F170058DF23 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		ADCD721222783FFE0058DF23 /* Repository+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repository+Init.swift"; sourceTree = "<group>"; };
 		ADCD7214227843730058DF23 /* RepositoryDetailsSpecifics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsSpecifics.swift; sourceTree = "<group>"; };
+		ADCD72172278557A0058DF23 /* RepositoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPresenter.swift; sourceTree = "<group>"; };
+		ADCD7219227856040058DF23 /* RepositoryPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPresenting.swift; sourceTree = "<group>"; };
+		ADCD721B227856340058DF23 /* RepositoryDetailsPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsPresenting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +252,7 @@
 		ADCD719F22771CEC0058DF23 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				ADCD72162278556C0058DF23 /* Presenter */,
 				ADCD71BC22773EB10058DF23 /* Model */,
 				ADCD71AF22773ABE0058DF23 /* Provider */,
 				ADCD71A222771D0B0058DF23 /* View */,
@@ -426,8 +433,18 @@
 		ADCD720D2277B20F0058DF23 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				ADCD721B227856340058DF23 /* RepositoryDetailsPresenting.swift */,
 				ADCD720E2277B2230058DF23 /* RepositoryDetailsPresenter.swift */,
 				ADCD7214227843730058DF23 /* RepositoryDetailsSpecifics.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ADCD72162278556C0058DF23 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD7219227856040058DF23 /* RepositoryPresenting.swift */,
+				ADCD72172278557A0058DF23 /* RepositoryPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -566,6 +583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCD72182278557A0058DF23 /* RepositoryPresenter.swift in Sources */,
 				ADCD71F1227774690058DF23 /* RepoSearchError.swift in Sources */,
 				ADCD71C5227743380058DF23 /* Repository.swift in Sources */,
 				ADCD71D3227756D10058DF23 /* Kingfisher+ImagesFetching.swift in Sources */,
@@ -573,6 +591,7 @@
 				ADCD71B122773AD20058DF23 /* RepositoriesProviding.swift in Sources */,
 				ADCD71ED227773940058DF23 /* SearchErrorsResponse.swift in Sources */,
 				ADCD71FB227793D50058DF23 /* RepositoryDetailsViewController.swift in Sources */,
+				ADCD721A227856040058DF23 /* RepositoryPresenting.swift in Sources */,
 				ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */,
 				ADCD721122783F170058DF23 /* License.swift in Sources */,
 				ADCD7204227795DC0058DF23 /* RepositoryDetailsView.swift in Sources */,
@@ -583,6 +602,7 @@
 				ADCD71E422775ED20058DF23 /* RepositoryCell.swift in Sources */,
 				ADCD720A2277A32A0058DF23 /* ColorsPalette.swift in Sources */,
 				ADCD71B322773AE30058DF23 /* RepositoriesProvider.swift in Sources */,
+				ADCD721C227856340058DF23 /* RepositoryDetailsPresenting.swift in Sources */,
 				ADCD71AC22772DE80058DF23 /* SearchView.swift in Sources */,
 				ADCD716F227702280058DF23 /* AppDelegate.swift in Sources */,
 				ADCD720F2277B2230058DF23 /* RepositoryDetailsPresenter.swift in Sources */,
