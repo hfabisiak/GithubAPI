@@ -13,13 +13,14 @@ extension KingfisherManager: ImagesFetching {
     
     func fetchImage(with url: String, completion: @escaping ImagesFetchingCompletion) {
         func fetchImage(with url: String, completion: @escaping ImagesFetchingCompletion) {
-            guard let url = URL(string: url) else { return }
-            KingfisherManager.shared.retrieveImage(with: url) { result in
-                switch result {
-                case let .success(response):
-                    completion(.success(response.image))
-                case let .failure(error):
-                    completion(.failure(error))
+            if let url = URL(string: url) {
+                KingfisherManager.shared.retrieveImage(with: url) { result in
+                    switch result {
+                    case let .success(response):
+                        completion(.success(response.image))
+                    case let .failure(error):
+                        completion(.failure(error))
+                    }
                 }
             }
         }

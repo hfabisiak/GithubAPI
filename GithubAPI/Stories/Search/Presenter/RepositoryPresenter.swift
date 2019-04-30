@@ -6,7 +6,7 @@
 //  Copyright © 2019 HubertFabisiak. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Kingfisher
 
 class RepositoryPresenter: RepositoryPresenting {
@@ -20,8 +20,8 @@ class RepositoryPresenter: RepositoryPresenting {
             switch result {
             case let .success(image):
                 cell.avatarImageView.image = image
-            case .failure(_):
-                break
+            case .failure:
+                cell.avatarImageView.image = UIImage(named: "github_base_avatar")
             }
         }
         cell.topLabel.text = model.fullName

@@ -14,10 +14,12 @@ class SearchViewController: UIViewController {
     
     init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) },
          repositoriesProvider: RepositoriesProviding = RepositoriesProvider(),
-         repositoryPresenter: RepositoryPresenting = RepositoryPresenter()) {
+         repositoryPresenter: RepositoryPresenting = RepositoryPresenter(),
+         searchReducer: SearchReducing = SearchReducer()) {
         self.searchControllerFactory = searchControllerFactory
         self.repositoriesProvider = repositoriesProvider
         self.repositoryPresenter = repositoryPresenter
+        self.searchReducer = searchReducer
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,21 +66,29 @@ class SearchViewController: UIViewController {
     private let searchControllerFactory: SearchRepositoryControllerFactory
     private let repositoriesProvider: RepositoriesProviding
     private let repositoryPresenter: RepositoryPresenting
+    private let searchReducer: SearchReducing
+    private var state = SearchState() {
+        didSet {
+            DispatchQueue.main.async {
+                self.searchView.resultsTableView.reloadData()
+            }
+        }
+    }
     
     private func setupTableView() {
         searchView.resultsTableView.dataSource = self
         searchView.resultsTableView.delegate = self
     }
     
-    @objc private func reloadResults(for query: String) {
-        repositoriesProvider.search(query) { [weak self] result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self?.searchView.resultsTableView.reloadData()
-                }
-            default: break
-            }
+    private func performEvent(_ event: SearchServiceEvent) {
+        searchReducer.reduce(oldState: state, event: event) { [weak self] state in
+            self?.state = state
+        }
+    }
+    
+    @objc private func reloadResults(_ searchBar: UISearchBar) {
+        if let query = searchBar.text, !query.isEmpty {
+            performEvent(.queryChanged(query))
         }
     }
     
@@ -87,7 +97,8 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        reloadResults(for: searchText)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reloadResults), object: searchBar)
+        perform(#selector(reloadResults), with: searchBar, afterDelay: 0.5)
     }
 }
 
@@ -96,7 +107,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repositoryDetailsViewController = RepositoryDetailsViewController(repository: repositoriesProvider.repositories[indexPath.row])
+        let repositoryDetailsViewController = RepositoryDetailsViewController(repository: state.items[indexPath.row])
         pushController?(repositoryDetailsViewController, true)
     }
     
@@ -107,13 +118,19 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoriesProvider.repositories.count
+        return state.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RepositoryCell = tableView.dequeueReusableCell(for: indexPath)
-        repositoryPresenter.present(model: repositoriesProvider.repositories[indexPath.row], for: cell)
+        repositoryPresenter.present(model: state.items[indexPath.row], for: cell)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == state.items.count - 1 {
+            performEvent(.loadNextPage)
+        }
     }
 
 }

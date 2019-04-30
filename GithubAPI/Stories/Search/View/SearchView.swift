@@ -39,6 +39,7 @@ extension SearchView {
         
         static var resultsTableView: UITableView {
             let tableView = UITableView(frame: .zero, style: .plain)
+            tableView.keyboardDismissMode = .onDrag
             tableView.rowHeight = 75.0
             tableView.register(cell: RepositoryCell.self)
             return tableView

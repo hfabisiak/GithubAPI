@@ -10,9 +10,7 @@
 import Foundation
 
 class RepositoriesProviderStub: RepositoriesProviding {
-    
 
-    
     var repositories: [Repository] = [
         Repository(id: 1,
                    fullName: "Hextris/hextris",

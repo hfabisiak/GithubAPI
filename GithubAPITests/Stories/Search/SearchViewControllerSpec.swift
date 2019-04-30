@@ -94,6 +94,10 @@ class SearchViewControllerSpec: QuickSpec {
                     expect(cell).toNot(beNil())
                 }
                 
+                it("should dismiss keyboard on dragging") {
+                    expect(sut.searchView.resultsTableView.keyboardDismissMode) == .onDrag
+                }
+                
                 it("should have number of cells matching number of provided repositories") {
                     let numberOfCells = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, numberOfRowsInSection: 0)
                     expect(numberOfCells) == repositoriesProviderStub.repositories.count
@@ -139,18 +143,10 @@ class SearchViewControllerSpec: QuickSpec {
                 }
                 
                 it("should update results when typing") {
+                    sut.searchController.searchBar.text = "ios"
                     sut.searchController.searchBar.delegate?.searchBar?(sut.searchController.searchBar, textDidChange: "ios")
-                    waitUntil(timeout: 1.0, action: { isDoneCompletion in
-                        expect(repositoriesProviderStub.repositories.isEmpty).to(beTrue())
-                        isDoneCompletion()
-                    })
+                    expect(repositoriesProviderStub.repositories).toEventually(beEmpty())
                 }
-                
-//                it("should cancel all previous requests when typing") {
-//                    var numberOfRequests = sut.
-//                    sut.searchController.searchBar.text = "ios"
-//
-//                }
             }
             
             describe("required initializer") {
