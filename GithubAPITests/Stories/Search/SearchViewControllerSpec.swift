@@ -17,16 +17,22 @@ class SearchViewControllerSpec: QuickSpec {
         describe("SearchViewController") {
             var sut: SearchViewController!
             var navigationController: UINavigationController!
-            var repositoriesProviderStub: RepositoriesProviding!
+            var repositoriesProviderStub: RepositoriesProviderStub!
             var imagesFetcherStub: ImagesFetching!
             var repositoryPresenterStub: RepositoryPresenting!
+            var searchReducerStub: SearchReducing!
+            var searchStateStub: SearchState!
             
             beforeEach {
                 repositoriesProviderStub = RepositoriesProviderStub()
+                searchStateStub = SearchState()
+                searchStateStub.items = repositoriesProviderStub.repositories
+                searchReducerStub = SearchReducer(repositoriesProvider: repositoriesProviderStub)
                 imagesFetcherStub = ImagesFetcherStub()
                 repositoryPresenterStub = RepositoryPresenter(imagesFetcher: imagesFetcherStub)
-                sut = SearchViewController(repositoriesProvider: repositoriesProviderStub,
-                                           repositoryPresenter: repositoryPresenterStub)
+                sut = SearchViewController(repositoryPresenter: repositoryPresenterStub,
+                                           state: searchStateStub,
+                                           searchReducer: searchReducerStub)
                 navigationController = UINavigationController(rootViewController: sut)
                 _ = sut.view
             }
@@ -36,6 +42,8 @@ class SearchViewControllerSpec: QuickSpec {
                 sut = nil
                 repositoryPresenterStub = nil
                 imagesFetcherStub = nil
+                searchReducerStub = nil
+                searchStateStub = nil
                 repositoriesProviderStub = nil
             }
             
@@ -98,9 +106,12 @@ class SearchViewControllerSpec: QuickSpec {
                     expect(sut.searchView.resultsTableView.keyboardDismissMode) == .onDrag
                 }
                 
-                it("should have number of cells matching number of provided repositories") {
+                it("should have number of cells matching number of provided repositories after starting to search") {
+                    sut.searchController.searchBar.text = "tetris"
+                    sut.searchController.searchBar.delegate?.searchBar?(sut.searchController.searchBar, textDidChange: "tetris")
+                    
                     let numberOfCells = sut.searchView.resultsTableView.dataSource?.tableView(sut.searchView.resultsTableView, numberOfRowsInSection: 0)
-                    expect(numberOfCells) == repositoriesProviderStub.repositories.count
+                    expect(numberOfCells).toEventually(equal(repositoriesProviderStub.repositories.count))
                 }
                 
                 it("should have properly configured cell") {

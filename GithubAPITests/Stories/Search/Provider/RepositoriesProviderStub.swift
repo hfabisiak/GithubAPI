@@ -45,9 +45,13 @@ class RepositoriesProviderStub: RepositoriesProviding {
                    owner: RepositoryOwner(login: "Captain america", avatarURL: "github_pic_4.jpg"))
     ]
 
-    func search(_ query: String, with completion: @escaping RepositoriesSearchProviderCompletion) {
+    func search(_ query: String, for page: Int, with completion: @escaping RepositoriesSearchProviderCompletion) {
         repositories = repositories.filter{ $0.fullName.contains(query) }
-        completion(.success(repositories))
+        let page = RepositoriesPage(results: repositories,
+                                    pageIndex: 1,
+                                    nextPageIndex: 2,
+                                    numberOfAllRepositories: 30)
+        completion(.success(page))
     }
     
 }

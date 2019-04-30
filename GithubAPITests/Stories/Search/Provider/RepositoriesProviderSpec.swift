@@ -40,7 +40,7 @@ class RepositoriesProviderSpec: QuickSpec {
                 it("should throw an assertion when url is malformed") {
                     sut = RepositoriesProvider(decoder: jsonDecoderStub, session: urlSessionStub, apiRoute: "this is wrong route")
                     expect{
-                        sut.search("tetris", with: { _ in })
+                        sut.search("tetris", for: 1, with: { _ in })
                     }.to(throwAssertion())
                 }
             }
@@ -53,9 +53,9 @@ class RepositoriesProviderSpec: QuickSpec {
                     }
                     
                     waitUntil(timeout: 1.0, action: { isDoneCompletion in
-                        sut.search("tetris", with: { result in
+                        sut.search("tetris", for: 1, with: { result in
                             switch result {
-                            case let .success(response) where response.count == 30:
+                            case let .success(page) where page.results.count == 30:
                                 isDoneCompletion()
                             default:
                                 break

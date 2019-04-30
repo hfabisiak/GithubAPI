@@ -13,13 +13,13 @@ class SearchViewController: UIViewController {
     typealias SearchRepositoryControllerFactory = () -> UISearchController
     
     init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) },
-         repositoriesProvider: RepositoriesProviding = RepositoriesProvider(),
          repositoryPresenter: RepositoryPresenting = RepositoryPresenter(),
+         state: SearchState = SearchState(),
          searchReducer: SearchReducing = SearchReducer()) {
         self.searchControllerFactory = searchControllerFactory
-        self.repositoriesProvider = repositoriesProvider
         self.repositoryPresenter = repositoryPresenter
         self.searchReducer = searchReducer
+        self.state = state
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,10 +64,9 @@ class SearchViewController: UIViewController {
     // MARK: - Private
     
     private let searchControllerFactory: SearchRepositoryControllerFactory
-    private let repositoriesProvider: RepositoriesProviding
     private let repositoryPresenter: RepositoryPresenting
     private let searchReducer: SearchReducing
-    private var state = SearchState() {
+    private var state: SearchState {
         didSet {
             DispatchQueue.main.async {
                 self.searchView.resultsTableView.reloadData()
