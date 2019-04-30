@@ -23,17 +23,15 @@ class RepositoryDetailsViewControllerSpec: QuickSpec {
                                         description: "It is really nice game Tetris, this text should not fit the screen, so we need to add three dots at the end of the label",
                                         language: "C++",
                                         forksCount: 2,
-                                        watchers: 24,
+                                        watchersCount: 24,
                                         owner: RepositoryOwner(login: "Thor", avatarURL: "github_pic_2.jpg"))
                 sut = RepositoryDetailsViewController(repository: repository)
                 _ = sut.view
-                record = true
             }
             
             afterEach {
                 sut = nil
                 repository = nil
-                record = false
             }
             
             context("view did load") {
@@ -50,7 +48,7 @@ class RepositoryDetailsViewControllerSpec: QuickSpec {
                     }
                     
                     it("should have correct title") {
-                        expect(sut.navigationItem.title) == repository.fullName
+                        expect(sut.navigationItem.title) == "Repository details"
                     }
                 }
             }
@@ -61,40 +59,25 @@ class RepositoryDetailsViewControllerSpec: QuickSpec {
                     expect(cell).toNot(beNil())
                 }
                 
-                it("should have cell properly configured") {
+                it("should configure 1st cell properly") {
                     let cell = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? RepositoryDetailsCell
                     expect(cell).notTo(beNil())
-                    expect(cell?.titleLabel.text) == "Name:"
+                    expect(cell?.titleLabel.text) == "Full name:"
                     expect(cell?.detailsLabel.text) == repository.fullName
                 }
                 
-                it("should have 2 sections") {
-                    let numberOfSections = sut.repositoryDetailsView.detailsTableView.dataSource?.numberOfSections?(in: sut.repositoryDetailsView.detailsTableView)
-                    expect(numberOfSections) == 2
+                it("should configure 2nd cell properly") {
+                    let cell = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, cellForRowAt: IndexPath(row: 1, section: 0)) as? RepositoryDetailsCell
+                    expect(cell).notTo(beNil())
+                    expect(cell?.titleLabel.text) == "Owner:"
+                    expect(cell?.detailsLabel.text) == repository.owner.login
                 }
                 
                 describe("sections") {
                     describe("1st section") {
                         it("should have 6 rows") {
                             let numberOfRows = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, numberOfRowsInSection: 0)
-                            expect(numberOfRows) == 6
-                        }
-                        
-                        it("should have correct title") {
-                            let title = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView?(sut.repositoryDetailsView.detailsTableView, titleForHeaderInSection: 0)
-                            expect(title) == "Details"
-                        }
-                    }
-                    
-                    describe("2nd section") {
-                        it("should have 1 row") {
-                            let numberOfRows = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView(sut.repositoryDetailsView.detailsTableView, numberOfRowsInSection: 1)
-                            expect(numberOfRows) == 1
-                        }
-                        
-                        it("should have correct title") {
-                            let title = sut.repositoryDetailsView.detailsTableView.dataSource?.tableView?(sut.repositoryDetailsView.detailsTableView, titleForHeaderInSection: 1)
-                            expect(title) == "Owner"
+                            expect(numberOfRows) == 9
                         }
                     }
                 }

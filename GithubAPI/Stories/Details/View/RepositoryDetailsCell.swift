@@ -28,13 +28,9 @@ class RepositoryDetailsCell: UITableViewCell {
     
     private func setupConstraints() {
         textStackView.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(16.0)
-            $0.trailing.equalToSuperview().offset(-16.0)
-            $0.top.bottom.equalToSuperview()
+            $0.bottom.trailing.equalToSuperview().offset(-16.0)
+            $0.top.leading.equalToSuperview().offset(16.0)
         }
-        
-        detailsLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
     
     required init?(coder _: NSCoder) { return nil }
@@ -47,16 +43,17 @@ extension RepositoryDetailsCell {
         static var titleLabel: UILabel {
             let label = UILabel()
             label.textAlignment = .left
-            label.font = UIFont.systemFont(ofSize: 12.0, weight: .medium)
+            label.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
             label.textColor = ColorsPalette.black
             return label
         }
         
         static var detailsLabel: UILabel {
             let label = UILabel()
-            label.textAlignment = .left
-            label.font = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+            label.textAlignment = .right
+            label.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
             label.textColor = ColorsPalette.blueGrey
+            label.numberOfLines = 0
             return label
         }
         

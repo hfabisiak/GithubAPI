@@ -55,6 +55,10 @@
 		ADCD720822779D3D0058DF23 /* RepositoryDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD720722779D3D0058DF23 /* RepositoryDetailsCell.swift */; };
 		ADCD720A2277A32A0058DF23 /* ColorsPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD72092277A32A0058DF23 /* ColorsPalette.swift */; };
 		ADCD720C2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD720B2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift */; };
+		ADCD720F2277B2230058DF23 /* RepositoryDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD720E2277B2230058DF23 /* RepositoryDetailsPresenter.swift */; };
+		ADCD721122783F170058DF23 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721022783F170058DF23 /* License.swift */; };
+		ADCD721322783FFE0058DF23 /* Repository+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD721222783FFE0058DF23 /* Repository+Init.swift */; };
+		ADCD7215227843730058DF23 /* RepositoryDetailsSpecifics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCD7214227843730058DF23 /* RepositoryDetailsSpecifics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +136,10 @@
 		ADCD720722779D3D0058DF23 /* RepositoryDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsCell.swift; sourceTree = "<group>"; };
 		ADCD72092277A32A0058DF23 /* ColorsPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsPalette.swift; sourceTree = "<group>"; };
 		ADCD720B2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsCellSpec.swift; sourceTree = "<group>"; };
+		ADCD720E2277B2230058DF23 /* RepositoryDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsPresenter.swift; sourceTree = "<group>"; };
+		ADCD721022783F170058DF23 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		ADCD721222783FFE0058DF23 /* Repository+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Repository+Init.swift"; sourceTree = "<group>"; };
+		ADCD7214227843730058DF23 /* RepositoryDetailsSpecifics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsSpecifics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +319,7 @@
 				ADCD71C6227754160058DF23 /* RepositoryOwner.swift */,
 				ADCD71EC227773940058DF23 /* SearchErrorsResponse.swift */,
 				ADCD71F0227774690058DF23 /* RepoSearchError.swift */,
+				ADCD721022783F170058DF23 /* License.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCD71D7227758D50058DF23 /* ImagesFetcherStub.swift */,
+				ADCD721222783FFE0058DF23 /* Repository+Init.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -387,6 +397,7 @@
 		ADCD71F9227793CB0058DF23 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				ADCD720D2277B20F0058DF23 /* Presenter */,
 				ADCD71FC227793FE0058DF23 /* View */,
 			);
 			path = Details;
@@ -410,6 +421,15 @@
 				ADCD720B2277A3E20058DF23 /* RepositoryDetailsCellSpec.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		ADCD720D2277B20F0058DF23 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ADCD720E2277B2230058DF23 /* RepositoryDetailsPresenter.swift */,
+				ADCD7214227843730058DF23 /* RepositoryDetailsSpecifics.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,10 +569,12 @@
 				ADCD71F1227774690058DF23 /* RepoSearchError.swift in Sources */,
 				ADCD71C5227743380058DF23 /* Repository.swift in Sources */,
 				ADCD71D3227756D10058DF23 /* Kingfisher+ImagesFetching.swift in Sources */,
+				ADCD7215227843730058DF23 /* RepositoryDetailsSpecifics.swift in Sources */,
 				ADCD71B122773AD20058DF23 /* RepositoriesProviding.swift in Sources */,
 				ADCD71ED227773940058DF23 /* SearchErrorsResponse.swift in Sources */,
 				ADCD71FB227793D50058DF23 /* RepositoryDetailsViewController.swift in Sources */,
 				ADCD71E9227764F10058DF23 /* UITableView+Extensions.swift in Sources */,
+				ADCD721122783F170058DF23 /* License.swift in Sources */,
 				ADCD7204227795DC0058DF23 /* RepositoryDetailsView.swift in Sources */,
 				ADCD71A122771CF90058DF23 /* SearchViewController.swift in Sources */,
 				ADCD71CE227756510058DF23 /* ImagesFetching.swift in Sources */,
@@ -563,6 +585,7 @@
 				ADCD71B322773AE30058DF23 /* RepositoriesProvider.swift in Sources */,
 				ADCD71AC22772DE80058DF23 /* SearchView.swift in Sources */,
 				ADCD716F227702280058DF23 /* AppDelegate.swift in Sources */,
+				ADCD720F2277B2230058DF23 /* RepositoryDetailsPresenter.swift in Sources */,
 				ADCD71C3227741040058DF23 /* RepositoriesSearchResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +596,7 @@
 			files = (
 				ADCD71D8227758D50058DF23 /* ImagesFetcherStub.swift in Sources */,
 				ADCD71B822773BF20058DF23 /* RepositoriesProviderStub.swift in Sources */,
+				ADCD721322783FFE0058DF23 /* Repository+Init.swift in Sources */,
 				ADCD72022277941E0058DF23 /* RepositoryDetailsViewControllerSpec.swift in Sources */,
 				ADCD72062277997C0058DF23 /* RepositoryDetailsViewSpec.swift in Sources */,
 				ADCD71CB2277560C0058DF23 /* Bundle+TestBundle.swift in Sources */,

@@ -11,13 +11,15 @@ import Foundation
 
 class RepositoriesProviderStub: RepositoriesProviding {
     
+
+    
     var repositories: [Repository] = [
         Repository(id: 1,
                    fullName: "Hextris/hextris",
                    description: "It is really nice game Tetris, this text should not fit the screen, so we need to add three dots at the end of the label",
                    language: "Javascript",
                    forksCount: 2,
-                   watchers: 24,
+                   watchersCount: 24,
                    owner: RepositoryOwner(login: "Iron Man", avatarURL: "github_pic_1.jpg")),
         
         Repository(id: 2,
@@ -25,7 +27,7 @@ class RepositoriesProviderStub: RepositoriesProviding {
                    description: "It is really nice game Tetris, this text should not fit the screen, so we need to add three dots at the end of the label",
                    language: "C++",
                    forksCount: 2,
-                   watchers: 24,
+                   watchersCount: 24,
                    owner: RepositoryOwner(login: "Thor", avatarURL: "github_pic_2.jpg")),
         
         Repository(id: 3,
@@ -33,7 +35,7 @@ class RepositoriesProviderStub: RepositoriesProviding {
                    description: nil,
                    language: "Swift",
                    forksCount: 2,
-                   watchers: 24,
+                   watchersCount: 24,
                    owner: RepositoryOwner(login: "Spiderman", avatarURL: "github_pic_3.png")),
         
         Repository(id: 4,
@@ -41,7 +43,7 @@ class RepositoriesProviderStub: RepositoriesProviding {
                    description: "It is really nice game Tetris, this text should not fit the screen, so we need to add three dots at the end of the label",
                    language: "Objective-C",
                    forksCount: 2,
-                   watchers: 24,
+                   watchersCount: 24,
                    owner: RepositoryOwner(login: "Captain america", avatarURL: "github_pic_4.jpg"))
     ]
 

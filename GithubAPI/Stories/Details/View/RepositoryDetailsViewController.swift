@@ -14,8 +14,10 @@ class RepositoryDetailsViewController: UIViewController {
         return view as! RepositoryDetailsView
     }
     
-    init(repository: Repository) {
+    init(repository: Repository,
+         repositoryDetailsPresenter: RepositoryDetailsPresenter = RepositoryDetailsPresenter()) {
         self.repository = repository
+        self.repositoryDetailsPresenter = repositoryDetailsPresenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,7 +29,7 @@ class RepositoryDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = repository.fullName
+        navigationItem.title = "Repository details"
         navigationItem.largeTitleDisplayMode = .never
         setupTableView()
     }
@@ -35,6 +37,7 @@ class RepositoryDetailsViewController: UIViewController {
     // MARK: - Private
     
     private let repository: Repository
+    private let repositoryDetailsPresenter: RepositoryDetailsPresenter
     
     private func setupTableView() {
         repositoryDetailsView.detailsTableView.dataSource = self
@@ -46,24 +49,15 @@ class RepositoryDetailsViewController: UIViewController {
 extension RepositoryDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 6 : 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return RepositoryDetailsSpecifics.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RepositoryDetailsCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.titleLabel.text = "Name:"
-        cell.detailsLabel.text = repository.fullName
+        repositoryDetailsPresenter.present(model: repository, in: cell, for: indexPath)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Details" : "Owner"
-    }
-    
+
 }
 
 

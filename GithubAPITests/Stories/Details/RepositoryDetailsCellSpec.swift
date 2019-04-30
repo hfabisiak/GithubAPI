@@ -21,12 +21,10 @@ class RepositoryDetailsCellSpec: QuickSpec {
                 sut = RepositoryDetailsCell()
                 sut.titleLabel.text = "Repository name:"
                 sut.detailsLabel.text = "IronMan/Tetris"
-                record = true
             }
             
             afterEach {
                 sut = nil
-                record = false
             }
             
             it("should match snapshot") {
