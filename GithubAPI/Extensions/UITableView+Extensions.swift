@@ -21,5 +21,10 @@ extension UITableView {
         return cell
     }
     
+    func deselectSelectedRow() {
+        if let selectedIndexPath = indexPathForSelectedRow {
+            deselectRow(at: selectedIndexPath, animated: true)
+        }
+    }
 }
 

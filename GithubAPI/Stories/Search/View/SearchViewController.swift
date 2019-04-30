@@ -61,6 +61,11 @@ class SearchViewController: UIViewController {
         setupTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchView.resultsTableView.deselectSelectedRow()
+    }
+    
     // MARK: - Private
     
     private let searchControllerFactory: SearchRepositoryControllerFactory
