@@ -1,14 +1,14 @@
-//
-//  RepositoriesProvider.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import Foundation
 
-class RepositoriesProvider: RepositoriesProviding {
+final class RepositoriesProvider: RepositoriesProviding {
+    
+    //MARK: - Private stored properties
+    
+    private let decoder: JSONDecoder
+    private let session: URLSession
+    private let apiRoute: String
+    
+    //MARK: - Internal methods
         
     init(decoder: JSONDecoder = JSONDecoder(),
          session: URLSession = .shared,
@@ -36,14 +36,11 @@ class RepositoriesProvider: RepositoriesProviding {
                     completion(.failure(RepoSearchError.searchError(errorData)))
                 }
             }
-        }.resume()
+        }
+        .resume()
     }
     
-    // MARK: - Private
-    
-    private let decoder: JSONDecoder
-    private let session: URLSession
-    private let apiRoute: String
+    //MARK: - Private methods
     
     private func buildURL(for query: String, and page: Int) -> String? {
         var urlComponents = URLComponents(string: apiRoute)

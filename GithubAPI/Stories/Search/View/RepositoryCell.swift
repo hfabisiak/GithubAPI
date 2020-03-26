@@ -1,20 +1,19 @@
-//
-//  RepositoryCell.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 
-class RepositoryCell: UITableViewCell {
+final class RepositoryCell: UITableViewCell {
+    
+    //MARK: - Internal stored properties
     
     private(set) var avatarImageView = Subviews.avatarImageView
     private(set) var topLabel = Subviews.topLabel
     private(set) var bottomLabel = Subviews.bottomLabel
     
+    //MARK: - Private stored properties
+    
     private let textStackView = Subviews.textStackView
+    private let wholeViewStackView = Subviews.wholeViewStackView
+    
+    //MARK: - Internal methods
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,26 +22,26 @@ class RepositoryCell: UITableViewCell {
         setupConstraints()
     }
     
+    required init?(coder _: NSCoder) { nil }
+    
+    //MARK: - Private methods
+    
     private func addSubviews() {
+        addSubview(wholeViewStackView)
         [topLabel, bottomLabel].forEach(textStackView.addArrangedSubview)
-        [avatarImageView, textStackView].forEach(contentView.addSubview)
+        [avatarImageView, textStackView].forEach(wholeViewStackView.addArrangedSubview)
     }
     
     private func setupConstraints() {
-        avatarImageView.snp.makeConstraints{
-            $0.size.equalTo(40.0)
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16.0)
+        wholeViewStackView.snp.makeConstraints{
+            $0.edges.equalToSuperview().inset(16.0)
         }
         
-        textStackView.snp.makeConstraints{
-            $0.leading.equalTo(avatarImageView.snp.trailing).offset(4.0)
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview()
+        avatarImageView.snp.makeConstraints{
+            $0.size.equalTo(40.0)
         }
     }
     
-    required init?(coder _: NSCoder) { return nil }
 }
 
 extension RepositoryCell {
@@ -79,7 +78,17 @@ extension RepositoryCell {
             label.font = UIFont.systemFont(ofSize: 10.0, weight: .regular)
             label.textColor = UIColor.lightGray
             label.lineBreakMode = .byTruncatingTail
+            label.numberOfLines = 0
             return label
+        }
+        
+        static var wholeViewStackView: UIStackView {
+            let stackView = UIStackView()
+            stackView.distribution = .fill
+            stackView.alignment = .center
+            stackView.spacing = 6.0
+            stackView.axis = .horizontal
+            return stackView
         }
         
     }

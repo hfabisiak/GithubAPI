@@ -1,18 +1,17 @@
-//
-//  RepositoryDetailsCell.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 
-class RepositoryDetailsCell: UITableViewCell {
+final class RepositoryDetailsCell: UITableViewCell {
+    
+    //MARK: - Internal stored properties
     
     private(set) var titleLabel = Subviews.titleLabel
     private(set) var detailsLabel = Subviews.detailsLabel
+    
+    //MARK: - Private stored properties
+    
     private let textStackView = Subviews.textStackView
+    
+    //MARK: - Internal methods
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -21,6 +20,8 @@ class RepositoryDetailsCell: UITableViewCell {
         setupConstraints()
     }
     
+    required init?(coder _: NSCoder) { nil }
+    
     private func addSubviews() {
         [titleLabel, detailsLabel].forEach(textStackView.addArrangedSubview)
         contentView.addSubview(textStackView)
@@ -28,12 +29,10 @@ class RepositoryDetailsCell: UITableViewCell {
     
     private func setupConstraints() {
         textStackView.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview().offset(-16.0)
-            $0.top.leading.equalToSuperview().offset(16.0)
+            $0.edges.equalToSuperview().inset(16.0)
         }
     }
     
-    required init?(coder _: NSCoder) { return nil }
 }
 
 extension RepositoryDetailsCell {

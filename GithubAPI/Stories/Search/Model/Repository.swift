@@ -1,14 +1,9 @@
-//
-//  Repository.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import Foundation
 
 struct Repository: Decodable {
+    
+    //MARK: - Internal stored properties
+    
     let id: Int64
     let fullName: String
     let description: String?

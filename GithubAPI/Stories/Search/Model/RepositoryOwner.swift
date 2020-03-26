@@ -1,14 +1,9 @@
-//
-//  RepositoryOwner.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import Foundation
 
 struct RepositoryOwner: Decodable {
+    
+    //MARK: - Internal stored properties
+    
     let login: String
     let avatarURL: String
     

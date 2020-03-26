@@ -1,17 +1,9 @@
-//
-//  RepositoryDetailsViewControllerSpec.swift
-//  GithubAPITests
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 @testable import GithubAPI
 import Quick
 import Nimble
 import SnapshotTesting
 
-class RepositoryDetailsViewControllerSpec: QuickSpec {
+final class RepositoryDetailsViewControllerSpec: QuickSpec {
     override func spec() {
         describe("class RepositoryDetailsViewController") {
             var sut: RepositoryDetailsViewController!

@@ -1,15 +1,7 @@
-//
-//  RepositoriesProviderStub.swift
-//  GithubAPITests
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 @testable import GithubAPI
 import Foundation
 
-class RepositoriesProviderStub: RepositoriesProviding {
+final class RepositoriesProviderStub: RepositoriesProviding {
 
     var repositories: [Repository] = [
         Repository(id: 1,

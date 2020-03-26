@@ -1,16 +1,12 @@
-//
-//  RepositoryDetailsView.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 
-class RepositoryDetailsView: UIView {
+final class RepositoryDetailsView: UIView {
+    
+    //MARK: - Internal stored properties
     
     private(set) var detailsTableView = Subviews.detailsTableView
+    
+    //MARK: - Internal methods
     
     init() {
         super.init(frame: .zero)
@@ -18,6 +14,10 @@ class RepositoryDetailsView: UIView {
         addSubviews()
         setupConstraints()
     }
+    
+    required init?(coder _: NSCoder) { nil }
+    
+    //MARK: - Private methods
     
     private func addSubviews() {
         addSubview(detailsTableView)
@@ -28,8 +28,7 @@ class RepositoryDetailsView: UIView {
             $0.edges.equalTo(safeAreaLayoutGuide)
         }
     }
-    
-    required init?(coder _: NSCoder) { return nil }
+
 }
 
 extension RepositoryDetailsView {

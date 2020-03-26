@@ -1,14 +1,12 @@
-//
-//  SearchReducer.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 30/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import Foundation
 
-class SearchReducer: SearchReducing {
+final class SearchReducer: SearchReducing {
+    
+    //MARK: - Private stored properties
+    
+    private let repositoriesProvider: RepositoriesProviding
+    
+    //MARK: - Internal methods
     
     init(repositoriesProvider: RepositoriesProviding = RepositoriesProvider()) {
         self.repositoriesProvider = repositoriesProvider
@@ -28,14 +26,12 @@ class SearchReducer: SearchReducing {
         repositoriesProvider.search(newState.query, for: newState.loadPageIndex) { result in
             switch result {
             case let .success(page):
-                
                 switch event {
                 case .queryChanged:
                     newState.items = page.results
                 case .loadNextPage:
                     newState.items += page.results
                 }
-                
                 newState.nextPage = page.nextPageIndex
                 newState.numberOfAllRepositories = page.numberOfAllRepositories
                 newState.shouldLoadNext = false
@@ -45,8 +41,5 @@ class SearchReducer: SearchReducing {
             }
         }
     }
-    
-    // MARK: - Private
-    
-    private let repositoriesProvider: RepositoriesProviding
+     
 }

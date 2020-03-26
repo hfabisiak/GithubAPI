@@ -1,17 +1,13 @@
-//
-//  SearchView.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 import SnapKit
 
-class SearchView: UIView {
+final class SearchView: UIView {
+    
+    //MARK: - Internal stored properties
     
     private(set) var resultsTableView = Subviews.resultsTableView
+    
+    //MARK: - Internal methods
     
     init() {
         super.init(frame: .zero)
@@ -19,6 +15,10 @@ class SearchView: UIView {
         addSubviews()
         setupConstraints()
     }
+    
+    required init?(coder _: NSCoder) { nil }
+    
+    //MARK: - Private methods
     
     private func addSubviews() {
         addSubview(resultsTableView)
@@ -29,8 +29,7 @@ class SearchView: UIView {
             $0.edges.equalTo(safeAreaLayoutGuide)
         }
     }
-    
-    required init?(coder _: NSCoder) { return nil }
+
 }
 
 extension SearchView {
@@ -40,8 +39,9 @@ extension SearchView {
         static var resultsTableView: UITableView {
             let tableView = UITableView(frame: .zero, style: .plain)
             tableView.keyboardDismissMode = .onDrag
-            tableView.rowHeight = 75.0
+            tableView.estimatedRowHeight = 75.0
             tableView.register(cell: RepositoryCell.self)
+            tableView.contentInsetAdjustmentBehavior = .never
             return tableView
         }
         

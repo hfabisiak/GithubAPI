@@ -1,15 +1,13 @@
-//
-//  RepositoryPresenter.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 30/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 import Kingfisher
 
-class RepositoryPresenter: RepositoryPresenting {
+final class RepositoryPresenter: RepositoryPresenting {
+    
+    //MARK: - Private stored properties
+    
+    private let imagesFetcher: ImagesFetching
+
+    //MARK: - Internal methods
     
     init(imagesFetcher: ImagesFetching = KingfisherManager.shared) {
         self.imagesFetcher = imagesFetcher
@@ -27,8 +25,5 @@ class RepositoryPresenter: RepositoryPresenting {
         cell.topLabel.text = model.fullName
         cell.bottomLabel.text = model.description ?? "-"
     }
-    
-    // MARK: - Private
-    
-    private let imagesFetcher: ImagesFetching
+
 }

@@ -1,72 +1,19 @@
-//
-//  SearchViewController.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     typealias SearchRepositoryControllerFactory = () -> UISearchController
     
-    init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) },
-         repositoryPresenter: RepositoryPresenting = RepositoryPresenter(),
-         state: SearchState = SearchState(),
-         searchReducer: SearchReducing = SearchReducer()) {
-        self.searchControllerFactory = searchControllerFactory
-        self.repositoryPresenter = repositoryPresenter
-        self.searchReducer = searchReducer
-        self.state = state
-        super.init(nibName: nil, bundle: nil)
-    }
+    //MARK: - Internal computed properties
     
-    var searchView: SearchView {
-        return view as! SearchView
-    }
+    var searchView: SearchView { view as! SearchView }
     
-    // MARK: - Helpers
+    //MARK: - Internal stored properties
     
     lazy var pushController: ((UIViewController, Bool) -> Void)? = navigationController?.pushViewController(_:animated:)
-    
-    // MARK: - Child controllers
-    
     lazy var searchController: UISearchController = searchControllerFactory()
     
-    // MARK: - Lifecycle
-    
-    override func loadView() {
-        view = SearchView()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        definesPresentationContext = true
-
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationItem.title = "Repositories"
-        navigationItem.largeTitleDisplayMode = .always
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = searchController
-        
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "Search repository by name"
-        searchController.searchBar.delegate = self
-    
-        setupTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        searchView.resultsTableView.deselectSelectedRow()
-    }
-    
-    // MARK: - Private
+    //MARK: - Private stored properties
     
     private let searchControllerFactory: SearchRepositoryControllerFactory
     private let repositoryPresenter: RepositoryPresenting
@@ -79,6 +26,55 @@ class SearchViewController: UIViewController {
         }
     }
     
+    //MARK: - Internal methods
+    
+    init(searchControllerFactory: @escaping SearchRepositoryControllerFactory = { UISearchController(searchResultsController: nil) },
+         repositoryPresenter: RepositoryPresenting = RepositoryPresenter(),
+         state: SearchState = SearchState(),
+         searchReducer: SearchReducing = SearchReducer()) {
+        self.searchControllerFactory = searchControllerFactory
+        self.repositoryPresenter = repositoryPresenter
+        self.searchReducer = searchReducer
+        self.state = state
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder _: NSCoder) { nil }
+        
+    override func loadView() {
+        view = SearchView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        definesPresentationContext = true
+        setupNavigationBar()
+        setupSearchController()
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchView.resultsTableView.deselectSelectedRow()
+    }
+    
+    //MARK: - Private methods
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Repositories"
+//        navigationItem.largeTitleDisplayMode = .always
+//        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+    }
+    
+    private func setupSearchController() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search repository by name"
+        searchController.searchBar.delegate = self
+    }
+
     private func setupTableView() {
         searchView.resultsTableView.dataSource = self
         searchView.resultsTableView.delegate = self
@@ -91,19 +87,21 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func reloadResults(_ searchBar: UISearchBar) {
-        if let query = searchBar.text, !query.isEmpty {
-            performEvent(.queryChanged(query))
-        }
+        guard let query = searchBar.text, !query.isEmpty else { return }
+        performEvent(.queryChanged(query))
     }
     
-    required init?(coder _: NSCoder) { return nil }
 }
 
+// MARK: - UISearchBarDelegate
+
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reloadResults), object: searchBar)
         perform(#selector(reloadResults), with: searchBar, afterDelay: 0.5)
     }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -121,9 +119,7 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return state.items.count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { state.items.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RepositoryCell = tableView.dequeueReusableCell(for: indexPath)
@@ -132,9 +128,8 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == state.items.count - 1 {
-            performEvent(.loadNextPage)
-        }
+        guard indexPath.row == state.items.count - 1 else { return }
+        performEvent(.loadNextPage)
     }
 
 }

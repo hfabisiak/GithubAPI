@@ -1,18 +1,17 @@
-//
-//  RepositoryDetailsViewController.swift
-//  GithubAPI
-//
-//  Created by Hubert Fabisiak on 29/04/2019.
-//  Copyright © 2019 HubertFabisiak. All rights reserved.
-//
-
 import UIKit
 
-class RepositoryDetailsViewController: UIViewController {
+final class RepositoryDetailsViewController: UIViewController {
     
-    var repositoryDetailsView: RepositoryDetailsView {
-        return view as! RepositoryDetailsView
-    }
+    //MARK: - Internal computed properties
+    
+    var repositoryDetailsView: RepositoryDetailsView { view as! RepositoryDetailsView }
+    
+    //MARK: - Private stored properties
+
+    private let repository: Repository
+    private let repositoryDetailsPresenter: RepositoryDetailsPresenting
+    
+    //MARK: - Internal methods
     
     init(repository: Repository,
          repositoryDetailsPresenter: RepositoryDetailsPresenting = RepositoryDetailsPresenter()) {
@@ -21,36 +20,36 @@ class RepositoryDetailsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    // MARK: - Lifecycle
-    
+    required init?(coder _: NSCoder) { nil }
+        
     override func loadView() {
         view = RepositoryDetailsView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Repository details"
-        navigationItem.largeTitleDisplayMode = .never
+        setupNavigationBar()
         setupTableView()
     }
     
-    // MARK: - Private
+    //MARK: - Private methods
     
-    private let repository: Repository
-    private let repositoryDetailsPresenter: RepositoryDetailsPresenting
+    private func setupNavigationBar() {
+        navigationItem.title = "Repository details"
+        navigationItem.largeTitleDisplayMode = .never
+    }
     
     private func setupTableView() {
         repositoryDetailsView.detailsTableView.dataSource = self
     }
     
-    required init?(coder _: NSCoder) { return nil }
 }
+
+// MARK: - UITableViewDataSource
 
 extension RepositoryDetailsViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RepositoryDetailsSpecifics.allCases.count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { RepositoryDetailsSpecifics.allCases.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RepositoryDetailsCell = tableView.dequeueReusableCell(for: indexPath)
