@@ -50,16 +50,8 @@ final class SearchViewControllerSpec: QuickSpec {
             }
             
             describe("navigation item") {
-                it("should always display large title") {
-                    expect(sut.navigationItem.largeTitleDisplayMode) == .always
-                }
-                
                 it("should have correct title") {
                     expect(sut.navigationItem.title) == "Repositories"
-                }
-                
-                it("should not hide search bar when scrolling") {
-                    expect(sut.navigationItem.hidesSearchBarWhenScrolling) == false
                 }
                 
                 describe("searchController") {
@@ -69,10 +61,6 @@ final class SearchViewControllerSpec: QuickSpec {
                     
                     it("should have correct placeholder") {
                         expect(sut.navigationItem.searchController?.searchBar.placeholder) == "Search repository by name"
-                    }
-                    
-                    it("should not dim background") {
-                        expect(sut.searchController.dimsBackgroundDuringPresentation) == false
                     }
                     
                     it("should not hide navigation bar during presentation") {
@@ -114,7 +102,7 @@ final class SearchViewControllerSpec: QuickSpec {
                 }
                 
                 it("should have correct row height") {
-                    expect(sut.searchView.resultsTableView.rowHeight) == 75.0
+                    expect(sut.searchView.resultsTableView.estimatedRowHeight) == 75.0
                 }
                 
                 it("should throw assertion if there is no such indexPath") {
